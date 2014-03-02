@@ -1,0 +1,5 @@
+[user]
+	name = Sebastian Heil
+	email = mail+git@sebastianheil.de
+[core]                                                                                                                                                                                                                                     
+    excludesfile = /home/sheil/.gitignore_global  
