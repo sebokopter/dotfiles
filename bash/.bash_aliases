@@ -198,3 +198,9 @@ alias gdel='git branch -D'
 alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 alias gll='git log --graph --pretty=oneline --abbrev-commit --color'
 alias gd='git diff'
+
+################################################################################
+# SSH
+################################################################################
+
+alias sshkr="ssh-keygen -f ~/.ssh/known_hosts -R" 
