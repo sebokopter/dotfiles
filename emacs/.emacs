@@ -367,3 +367,4 @@ This functions should be added to the hooks of major modes for programming."
 ;(require 'package)
 ;(add-to-list 'package-archives
 ;  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+(put 'dired-find-alternate-file 'disabled nil)
