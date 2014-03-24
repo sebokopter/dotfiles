@@ -136,6 +136,9 @@ This functions should be added to the hooks of major modes for programming."
 ;; enable some really cool extensions like C-x C-j(dired-jump)
 (require 'dired-x)
 
+;; dired: open next directory/file in same buffer
+(put 'dired-find-alternate-file 'disabled nil)
+
 ;; ediff - don't start another frame
 (require 'ediff)
 (setq ediff-window-setup-function 'ediff-setup-windows-plain)
