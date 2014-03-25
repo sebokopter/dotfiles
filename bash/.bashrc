@@ -67,8 +67,31 @@ export LSCOLORS='Gxfxcxdxdxegedabagacad'
 ################################################################################
 
 # show on every new bash open
-man $(ls /usr/bin | shuf -n 1) | sed -n "/^NAME/ {n;p;q}"
-
+## FIXME: How can I recursive call $()?
+rand=$(($RANDOM % 100))
+if [[ $rand -lt 50 ]]; then 
+    if [ -d /usr/share/cows ]; then
+        path='/usr/share/cows/'
+        cowcount=$(ls -1 /usr/share/cows/ | wc -l)
+        cownumber=$(($RANDOM % $cowcount +1))
+        cow=$(ls -1 /usr/share/cows/| sed -n "{ $cownumber p}")
+        man $(ls /usr/bin | shuf -n 1) 2>&1 | sed -n "/^NAME/ {n;p;q}" | cowsay -f $path$cow
+    else
+        man $(ls /usr/bin | shuf -n 1) | sed -n "/^NAME/ {n;p;q}"
+    fi
+elif [[ $rand -lt 100 ]]; then 
+    if [ -d /usr/share/cows ]; then
+        path='/usr/share/cows/'
+        cowcount=$(ls -1 /usr/share/cows/ | wc -l)
+        cownumber=$(($RANDOM % $cowcount +1))
+        cow=$(ls -1 /usr/share/cows/| sed -n "{ $cownumber p}")
+        cowsay -f $path$cow $(fortune -s)
+    else
+        fortune -s
+    fi
+else 
+    fortune ascii-art
+fi
 ################################################################################
 # History
 ################################################################################

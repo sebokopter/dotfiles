@@ -1,15 +1,20 @@
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- '(inhibit-startup-screen t))
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(column-number-mode t)
+ '(cperl-indent-parens-as-block t)
+ '(font-use-system-font t)
+ '(inhibit-startup-screen t)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 128 :width normal)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Cperl-Mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -46,7 +51,7 @@
          ;; Always return the anticipated result of compilation-exit-message-function
  	(cons msg code)))
 ; don't indent horizontally to the parenthesis instead indent as expected just a tabular width
-(custom-set-variables '(cperl-indent-parens-as-block t))
+
 
 (defun prelude-cperl-mode-defaults ()
   (setq cperl-indent-level 4)
@@ -130,6 +135,9 @@ This functions should be added to the hooks of major modes for programming."
 
 ;; enable some really cool extensions like C-x C-j(dired-jump)
 (require 'dired-x)
+
+;; dired: open next directory/file in same buffer
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;; ediff - don't start another frame
 (require 'ediff)
@@ -376,3 +384,8 @@ This functions should be added to the hooks of major modes for programming."
 
 ; loads magit mode after magit-status call
 (autoload 'magit-status "magit" nil t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; AUCTeX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(load "auctex.el" nil t t)
+(load "preview-latex.el" nil t t)

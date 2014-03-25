@@ -125,6 +125,51 @@ apt-history () {
 }
 
 ################################################################################
+# Pacman
+################################################################################
+
+# search 
+alias pacs='pacman -Ss'
+# local info
+alias pacli='pacman -Qi'
+# remote info
+alias pacri='pacman -Si'
+# which package owns/contains $file?
+alias paco='pacman -Qo'
+# list all file from a package
+alias pacl='pacman -Ql'
+# list packages which aren't required anymore
+alias pacorph='pacman -Qtd'
+# list apckages which are currently installed
+alias pacli='pacman -Qe'
+# commands using sudo
+if [[ $use_sudo -eq 1 ]]; then
+    # clean 
+    alias pacc='sudo pacman -Sc'
+    # refresh
+    alias pacr='sudo pacman -Syy'
+    # upgrade
+    alias pacud='sudo pacman -Suyy'
+    # install
+    alias paci='sudo pacman -S'
+    # remove
+    # TODO
+
+# commands using su
+else
+    # clean 
+    alias pacc='su -lc pacman -Sc'
+    # refresh
+    alias pacr='su -lc pacman -Syy'
+    # upgrade
+    alias pacud='su -lc pacman -Suyy'
+    # install
+    alias paci='su -lc pacman -S'
+    # remove
+    # TODO
+fi
+
+################################################################################
 # Emacs
 ################################################################################
 
