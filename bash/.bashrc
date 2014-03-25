@@ -36,6 +36,19 @@ fi
 if [ -e /usr/share/autojump/autojump.bash ]; then
   source /usr/share/autojump/autojump.bash
 fi
+# make `j` better
+function j { 
+    new_path="$(autojump $@)";
+    status=$?; 
+    if (( status == 0 )); then
+        if [ -n "$new_path" ]; then 
+            echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";
+        else false; 
+        fi;
+    else
+        cd $@;
+    fi
+}  
 
 ################################################################################
 # Variables
@@ -72,7 +85,7 @@ export HISTCONTROL=ignoreboth
 
 # Ignore (=don't show) the following commands in the history
 ## & removes duplicates
-export HISTIGNORE="history:&:clear:cd*:exit"
+#export HISTIGNORE="history:&:clear:cd*:exit"
 
 # resize history size
 export HISTSIZE=5000
