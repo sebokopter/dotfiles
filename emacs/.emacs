@@ -138,6 +138,8 @@ This functions should be added to the hooks of major modes for programming."
 ;; clean up obsolete buffers automatically
 (require 'midnight)
 
+;; should dired create a new buffer for every directory you visiting?
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;; Line Numbering ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -367,4 +369,10 @@ This functions should be added to the hooks of major modes for programming."
 ;(require 'package)
 ;(add-to-list 'package-archives
 ;  '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(put 'dired-find-alternate-file 'disabled nil)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; VC/Git ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; loads magit mode after magit-status call
+(autoload 'magit-status "magit" nil t)
