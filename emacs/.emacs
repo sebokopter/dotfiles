@@ -388,12 +388,14 @@ This functions should be added to the hooks of major modes for programming."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; AUCTeX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+; TODO: not emacs version (23/24) indenpendent or file missing?
+;(load "auctex.el" nil t t)
+;(load "preview-latex.el" nil t t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;; company-mode;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; TODO: doesn't work as expected
 ; load company-mode for autocompletion
 (add-to-list 'load-path "~/.emacs.d/elisp/company-mode")
 (autoload 'company-mode "company" nil t)
