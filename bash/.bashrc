@@ -69,22 +69,27 @@ export LSCOLORS='Gxfxcxdxdxegedabagacad'
 # show on every new bash open
 ## FIXME: How can I recursive call $()?
 rand=$(($RANDOM % 100))
+if [ -d /usr/share/cows ]; then
+    path='/usr/share/cows/'
+fi
+if [ -d /usr/share/cowsay/cows ]; then
+    path='/usr/share/cowsay/cows/'
+fi
+
 if [[ $rand -lt 50 ]]; then 
-    if [ -d /usr/share/cows ]; then
-        path='/usr/share/cows/'
-        cowcount=$(ls -1 /usr/share/cows/ | wc -l)
+    if [ -n $path ]; then
+        cowcount=$(ls -1 $path | wc -l)
         cownumber=$(($RANDOM % $cowcount +1))
-        cow=$(ls -1 /usr/share/cows/| sed -n "{ $cownumber p}")
+        cow=$(ls -1 $path | sed -n "{ $cownumber p}")
         man $(ls /usr/bin | shuf -n 1) 2>&1 | sed -n "/^NAME/ {n;p;q}" | cowsay -f $path$cow
     else
         man $(ls /usr/bin | shuf -n 1) | sed -n "/^NAME/ {n;p;q}"
     fi
 elif [[ $rand -lt 100 ]]; then 
-    if [ -d /usr/share/cows ]; then
-        path='/usr/share/cows/'
-        cowcount=$(ls -1 /usr/share/cows/ | wc -l)
+    if [ -n $path ]; then
+        cowcount=$(ls -1 $path | wc -l)
         cownumber=$(($RANDOM % $cowcount +1))
-        cow=$(ls -1 /usr/share/cows/| sed -n "{ $cownumber p}")
+        cow=$(ls -1 $path | sed -n "{ $cownumber p}")
         cowsay -f $path$cow $(fortune -s)
     else
         fortune -s
