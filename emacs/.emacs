@@ -96,6 +96,9 @@
 ;local:
 (add-hook 'cperl-mode-hook 'whitespace-mode)
 
+; add mode-compile for cperl running perl
+(add-to-list 'load-path "~/.emacs.d/elisp/mode-compile")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;; general programming ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
