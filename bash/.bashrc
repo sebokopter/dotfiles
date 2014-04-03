@@ -42,7 +42,9 @@ fi
 ################################################################################
 
 export EDITOR="vim"
-export PATH=$PATH:~/bin:/home/sebo/.gem/ruby/2.0.0/bin
+# TODO: check if ruby is installed
+export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
+
 # colored grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
