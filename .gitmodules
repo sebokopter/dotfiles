@@ -4,3 +4,6 @@
 [submodule "emacs/.emacs.d/elisp/mode-compile"]
 	path = emacs/.emacs.d/elisp/mode-compile
 	url = https://github.com/emacsmirror/mode-compile.git
+[submodule "emacs/.emacs.d/elisp/org-reveal"]
+	path = emacs/.emacs.d/elisp/org-reveal
+	url = https://github.com/yjwen/org-reveal.git

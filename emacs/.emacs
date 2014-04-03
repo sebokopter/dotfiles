@@ -403,3 +403,11 @@ This functions should be added to the hooks of major modes for programming."
 (add-to-list 'load-path "~/.emacs.d/elisp/company-mode")
 (autoload 'company-mode "company" nil t)
 ; start company mod with M-x company-mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; reveal.js ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(add-to-list 'load-path "~/.emacs.d/elisp/org-reveal")
+(require 'ox-reveal)
+; either comment and edit the following or clone reveal.js to the same dir as your org file
+;(setq org-reveal-root "file://../reveal.js")
+
