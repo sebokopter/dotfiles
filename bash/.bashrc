@@ -36,6 +36,19 @@ fi
 if [ -e /usr/share/autojump/autojump.bash ]; then
   source /usr/share/autojump/autojump.bash
 fi
+# make `j` better
+function j { 
+    new_path="$(autojump $@)";
+    status=$?; 
+    if (( status == 0 )); then
+        if [ -n "$new_path" ]; then 
+            echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";
+        else false; 
+        fi;
+    else
+        cd $@;
+    fi
+}  
 
 ################################################################################
 # Variables
@@ -58,22 +71,27 @@ export LSCOLORS='Gxfxcxdxdxegedabagacad'
 # show on every new bash open
 ## FIXME: How can I recursive call $()?
 rand=$(($RANDOM % 100))
+if [ -d /usr/share/cows ]; then
+    path='/usr/share/cows/'
+fi
+if [ -d /usr/share/cowsay/cows ]; then
+    path='/usr/share/cowsay/cows/'
+fi
+
 if [[ $rand -lt 50 ]]; then 
-    if [ -d /usr/share/cows ]; then
-        path='/usr/share/cows/'
-        cowcount=$(ls -1 /usr/share/cows/ | wc -l)
+    if [ -n $path ]; then
+        cowcount=$(ls -1 $path | wc -l)
         cownumber=$(($RANDOM % $cowcount +1))
-        cow=$(ls -1 /usr/share/cows/| sed -n "{ $cownumber p}")
+        cow=$(ls -1 $path | sed -n "{ $cownumber p}")
         man $(ls /usr/bin | shuf -n 1) 2>&1 | sed -n "/^NAME/ {n;p;q}" | cowsay -f $path$cow
     else
         man $(ls /usr/bin | shuf -n 1) | sed -n "/^NAME/ {n;p;q}"
     fi
 elif [[ $rand -lt 100 ]]; then 
-    if [ -d /usr/share/cows ]; then
-        path='/usr/share/cows/'
-        cowcount=$(ls -1 /usr/share/cows/ | wc -l)
+    if [ -n $path ]; then
+        cowcount=$(ls -1 $path | wc -l)
         cownumber=$(($RANDOM % $cowcount +1))
-        cow=$(ls -1 /usr/share/cows/| sed -n "{ $cownumber p}")
+        cow=$(ls -1 $path | sed -n "{ $cownumber p}")
         cowsay -f $path$cow $(fortune -s)
     else
         fortune -s
@@ -97,7 +115,7 @@ export HISTCONTROL=ignoreboth
 
 # Ignore (=don't show) the following commands in the history
 ## & removes duplicates
-export HISTIGNORE="history:&:clear:cd*:exit"
+#export HISTIGNORE="history:&:clear:cd*:exit"
 
 # resize history size
 export HISTSIZE=5000

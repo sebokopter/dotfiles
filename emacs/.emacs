@@ -96,6 +96,9 @@
 ;local:
 (add-hook 'cperl-mode-hook 'whitespace-mode)
 
+; add mode-compile for cperl running perl
+(add-to-list 'load-path "~/.emacs.d/elisp/mode-compile")
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;; general programming ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -146,6 +149,8 @@ This functions should be added to the hooks of major modes for programming."
 ;; clean up obsolete buffers automatically
 (require 'midnight)
 
+;; should dired create a new buffer for every directory you visiting?
+(put 'dired-find-alternate-file 'disabled nil)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;; Line Numbering ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -377,7 +382,24 @@ This functions should be added to the hooks of major modes for programming."
 ;  '("melpa" . "http://melpa.milkbox.net/packages/") t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;; VC/Git ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; loads magit mode after magit-status call
+(autoload 'magit-status "magit" nil t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; AUCTeX ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(load "auctex.el" nil t t)
-(load "preview-latex.el" nil t t)
+; TODO: not emacs version (23/24) indenpendent or file missing?
+;(load "auctex.el" nil t t)
+;(load "preview-latex.el" nil t t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;; company-mode;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; TODO: doesn't work as expected
+; load company-mode for autocompletion
+(add-to-list 'load-path "~/.emacs.d/elisp/company-mode")
+(autoload 'company-mode "company" nil t)
+; start company mod with M-x company-mode

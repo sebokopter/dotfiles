@@ -225,24 +225,30 @@ alias get='git'
 alias gst='git status'
 alias gs='git status'
 alias gss='git status -s'
-alias gl='git pull'
+alias gpl='git pull'
 alias gup='git fetch && git rebase'
 alias gp='git push'
 alias gpo='git push origin'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
+alias gcam='git commit -v --amend'
 alias gca='git commit -v -a'
 alias gci='git commit --interactive'
 alias gb='git branch'
+alias gbv='git branch -v'
 alias gba='git branch -a'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -D'
-alias gmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
+alias gfmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
+alias gl='git log --color'
 alias gll='git log --graph --pretty=oneline --abbrev-commit --color'
 alias gd='git diff'
+alias gr="git remote update -p" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
+alias gf="git fetch --all -p" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
+alias gmu="git merge @{u}" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
 
 ################################################################################
 # SSH
