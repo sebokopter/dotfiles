@@ -4,4 +4,4 @@ set expandtab
 set number
 set hlsearch
 set incsearch
-colorscheme darkblue   
+set bg=dark
