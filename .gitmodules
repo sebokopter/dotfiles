@@ -1,6 +1,0 @@
-[submodule "emacs/.emacs.d/elisp/company-mode"]
-	path = emacs/.emacs.d/elisp/company-mode
-	url = https://github.com/company-mode/company-mode.git
-[submodule "emacs/.emacs.d/elisp/mode-compile"]
-	path = emacs/.emacs.d/elisp/mode-compile
-	url = https://github.com/emacsmirror/mode-compile.git
