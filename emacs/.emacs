@@ -1,20 +1,18 @@
 (custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(column-number-mode t)
+  ;; custom-set-variables was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
  '(cperl-indent-parens-as-block t)
  '(font-use-system-font t)
- '(inhibit-startup-screen t)
- '(show-paren-mode t)
- '(tool-bar-mode nil))
+ '(inhibit-startup-screen t))
 (custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 128 :width normal)))))
+  ;; custom-set-faces was added by Custom.
+  ;; If you edit it by hand, you could mess it up, so be careful.
+  ;; Your init file should contain only one such instance.
+  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Ubuntu Mono" :foundry "unknown" :slant normal :weight normal :height 128 :width normal))))
+ '(cperl-array-face ((t (:foreground "red" :weight bold)))))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;; Cperl-Mode ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -71,6 +69,9 @@
   ;; if you want all the bells and whistles
   (setq cperl-hairy)
 
+  ;; to make cperl always highlight scalar variables
+  (setq cperl-highlight-variables-indiscriminately t)
+
   (set-face-background 'cperl-array-face nil)
   (set-face-background 'cperl-hash-face nil)
   (setq cperl-invalid-face nil)
@@ -98,6 +99,7 @@
 
 ; add mode-compile for cperl running perl
 (add-to-list 'load-path "~/.emacs.d/elisp/mode-compile")
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;; general programming ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -193,6 +195,7 @@ This functions should be added to the hooks of major modes for programming."
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; Text Input ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (show-paren-mode 1)
+(setq show-paren-delay 0)
 (delete-selection-mode 1)
 (setq mouse-yank-at-point t
 	  save-interprogram-paste-before-kill t
@@ -228,7 +231,9 @@ This functions should be added to the hooks of major modes for programming."
 (setq uniquify-buffer-name-style 'post-forward)
 (require 'ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-
+(add-to-list 'load-path "~/.emacs.d/elisp/fancy-narrow")
+(require 'fancy-narrow)
+(fancy-narrow-mode 1)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;; Color Theme ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -394,20 +399,44 @@ This functions should be added to the hooks of major modes for programming."
 ; TODO: not emacs version (23/24) indenpendent or file missing?
 ;(load "auctex.el" nil t t)
 ;(load "preview-latex.el" nil t t)
+;(setq TeX-PDF-mode t)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;; company-mode;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-; TODO: doesn't work as expected
 ; load company-mode for autocompletion
 (add-to-list 'load-path "~/.emacs.d/elisp/company-mode")
 (autoload 'company-mode "company" nil t)
 ; start company mod with M-x company-mode
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;; reveal.js ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(add-to-list 'load-path "~/.emacs.d/elisp/org-reveal")
-(require 'ox-reveal)
-; either comment and edit the following or clone reveal.js to the same dir as your org file
-;(setq org-reveal-root "file://../reveal.js")
+(setq company-auto-complete t)
+(setq company-auto-complete-chars '(41 46))
+(setq company-idle-delay t)
+(setq company-minimum-prefix-length 1)
+(setq company-show-numbers t)
+(setq company-global-modes
+      '(not
+        eshell-mode shell-mode term-mode terminal-mode))
+(add-hook 'after-init-hook 'global-company-mode)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;; saveplace ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; move cursor to the last position upon open
+(require 'saveplace)
+(setq save-place-file (concat user-emacs-directory ".cache/places"))
+(setq-default save-place t)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;; recentf ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; recent files
+(require 'recentf)
+(setq recentf-save-file (concat user-emacs-directory ".cache/recentf")
+      recentf-max-saved-items 1000
+      recentf-max-menu-items 500)
+(recentf-mode +1)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;; Bookmark ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(setq bookmark-default-file (concat user-emacs-directory ".cache/bookmarks"))
