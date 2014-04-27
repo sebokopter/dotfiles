@@ -124,77 +124,65 @@ export HISTSIZE=5000
 export HISTTIMEFORMAT="%Y-%m-%d %T "
 
 ################################################################################
-# based on ZORK Theme of bash-it
+# based on bash-it (zork theme) 
 ################################################################################
-SCM_THEME_PROMPT_PREFIX=""
-SCM_THEME_PROMPT_SUFFIX=""
-
-SCM_THEME_PROMPT_DIRTY=" \[\033[1;31m\]✗\[\033[0m\]"
-SCM_THEME_PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
 SCM_GIT='git'
 SCM_GIT_CHAR="\[\033[1;32m\]±\[\033[0m\]"
 SCM_NONE='NONE'
 SCM_NONE_CHAR='○'
 
-function scm_prompt_vars {
-  SCM_DIRTY=0
-  SCM_STATE=''
-  [[ $SCM == $SCM_GIT ]] && git_prompt_vars && return
-  echo -e "$SCM_BRANCH\[\033[01;32m\]$SCM_STATE\[\033[0m\]"
-}
-
-function git_prompt_vars {
-  SCM_GIT_AHEAD=''
-  SCM_GIT_BEHIND=''
-  SCM_GIT_STASH=''
+function git_info {
+  PROMPT_DIRTY=" \[\033[1;31m\]✗\[\033[0m\]"
+  PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
+  DIRTY=0
+  STATE=''
   local status="$(git status -bs --porcelain 2> /dev/null)"
   if [[ -n "$(grep -v ^# <<< "${status}")" ]]; then
-    SCM_DIRTY=1
-    SCM_STATE=${GIT_THEME_PROMPT_DIRTY:-$SCM_THEME_PROMPT_DIRTY}
+    DIRTY=1
+    STATE=$PROMPT_DIRTY
   else
-    SCM_DIRTY=0
-    SCM_STATE=${GIT_THEME_PROMPT_CLEAN:-$SCM_THEME_PROMPT_CLEAN}
+    DIRTY=0
+    STATE=$PROMPT_CLEAN
   fi
-  SCM_PREFIX=${GIT_THEME_PROMPT_PREFIX:-$SCM_THEME_PROMPT_PREFIX}
-  SCM_SUFFIX=${GIT_THEME_PROMPT_SUFFIX:-$SCM_THEME_PROMPT_SUFFIX}
   local ref=$(git symbolic-ref HEAD 2> /dev/null)
-  SCM_BRANCH=${ref#refs/heads/}
-  SCM_CHANGE=$(git rev-parse HEAD 2>/dev/null)
+  BRANCH=${ref#refs/heads/}
+
   local ahead_re='.+ahead ([0-9]+).+'
   local behind_re='.+behind ([0-9]+).+'
-  [[ "${status}" =~ ${ahead_re} ]] && SCM_GIT_AHEAD=" ${SCM_GIT_AHEAD_CHAR}${BASH_REMATCH[1]}"
-  [[ "${status}" =~ ${behind_re} ]] && SCM_GIT_BEHIND=" ${SCM_GIT_BEHIND_CHAR}${BASH_REMATCH[1]}"
+  GIT_AHEAD=''
+  GIT_BEHIND=''
+  GIT_AHEAD_CHAR="↑"
+  GIT_BEHIND_CHAR="↓"
+  [[ "${status}" =~ ${ahead_re} ]] && GIT_AHEAD=" ${GIT_AHEAD_CHAR}${BASH_REMATCH[1]}"
+  [[ "${status}" =~ ${behind_re} ]] && GIT_BEHIND=" ${GIT_BEHIND_CHAR}${BASH_REMATCH[1]}"
+
+  GIT_STASH=''
   local stash_count="$(git stash list | wc -l | tr -d ' ')"
-  [[ "${stash_count}" -gt 0 ]] && SCM_GIT_STASH=" {${stash_count}}"
+  [[ "${stash_count}" -gt 0 ]] && GIT_STASH=" {${stash_count}}"
+  echo -e "$BRANCH\[\033[01;32m\]$STATE\[\033[0m\]$GIT_AHEAD$GIT_BEHIND$GIT_STASH"
 }
 
-function scm_char {
-  if [[ -z $SCM ]]; then scm; fi
-  if [[ $SCM == $SCM_GIT ]]; then SCM_CHAR=$SCM_GIT_CHAR
-  else SCM_CHAR=$SCM_NONE_CHAR
-  fi
-  echo -e "$SCM_CHAR"
-}
+scm() {
+    if [[ -f .git/HEAD ]]; then
+        SCM='git'
+        SCM_CHAR="\[\033[1;32m\]±\[\033[0m\]"
+        SCM_PROMPT_DIRTY=" \[\033[1;31m\]✗\[\033[0m\]"
+        SCM_PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
+    elif [[ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]]; then
+        SCM='git'
+        SCM_CHAR="\[\033[1;32m\]±\[\033[0m\]"
+        SCM_PROMPT_DIRTY=" \[\033[1;31m\]✗\[\033[0m\]"
+        SCM_PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
+    else
+        SCM='NONE'
+        SCM_CHAR='○'
+    fi
 
-function scm {
-  if [[ -f .git/HEAD ]]; then SCM=$SCM_GIT
-  elif [[ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]]; then SCM=$SCM_GIT
-  elif [[ -d .hg ]]; then SCM=$SCM_HG
-  elif [[ -n "$(hg root 2> /dev/null)" ]]; then SCM=$SCM_HG
-  elif [[ -d .svn ]]; then SCM=$SCM_SVN
-  else SCM=$SCM_NONE
-  fi
-}
-
-modern_scm_prompt() {
-	    scm
-        CHAR=$(scm_char)
-        if [ $CHAR = $SCM_NONE_CHAR ];
-        then
-                return
-        else
-                echo "[$(scm_char)][$(scm_prompt_vars)]"
-        fi
+    if [ $SCM = 'NONE' ]; then
+            return
+    else
+            echo "[$SCM_CHAR][$(git_info)]"
+    fi
 }
 
 prompt() {
@@ -206,11 +194,11 @@ prompt() {
 
     # nice prompt
     case "`id -u`" in
-        0) PS1="[$my_ps_root][$my_ps_host]$(modern_scm_prompt)[$my_ps_path]
+        0) PS1="[$my_ps_root][$my_ps_host]$(scm)[$my_ps_path]
 # "
         PS2="# "
         ;;
-        *) PS1="[$my_ps_user][$my_ps_host]$(modern_scm_prompt)[$my_ps_path]
+        *) PS1="[$my_ps_user][$my_ps_host]$(scm)[$my_ps_path]
 $ "
         PS2="$ "
         ;;
