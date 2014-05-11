@@ -3,3 +3,5 @@
 	email = mail+git@sebastianheil.de
 [core]                                                                                                                                                                                                                                     
     excludesfile = /home/sheil/.gitignore_global  
+[push]
+	default = current
