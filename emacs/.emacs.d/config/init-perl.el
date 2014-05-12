@@ -16,6 +16,8 @@
   (setq cperl-electric-keywords t)
   (setq cperl-info-on-command-no-prompt t)
   (setq cperl-clobber-lisp-bindings t)
+  ;; should newline after parenthesis be indented (nil) or not (t)
+  (setq cperl-indent-parens-as-block t)
   ;; zeige cperl help nach einer gewissen zeit
   (setq cperl-lazy-help-time 3)
 
