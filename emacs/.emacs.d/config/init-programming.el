@@ -46,13 +46,12 @@ This functions should be added to the hooks of major modes for programming."
 (autoload 'mode-compile-kill "mode-compile"
 "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
+(global-set-key "\C-cc" 'mode-compile)
 
-;; keep mode-compile quiet
-(defun mode-compile-quiet ()
-  (interactive)
-  (flet ((read-string (&rest args) ""))
-    (mode-compile)))
-(global-set-key "\C-cc" 'mode-compile-quiet)
+;; The default length of the compilation window
+(setq compilation-window-height 24)
+;; On compilation, don't ask for command
+(setq compilation-read-command t)
 
 ;; Name compilation buffer after the buffer name
 ;(setq compilation-buffer-name-function 
@@ -69,10 +68,13 @@ This functions should be added to the hooks of major modes for programming."
          (when (and (eq status 'exit) (zerop code))
            ;; then optionally bury the *compilation* buffer, so that C-x b doesn't go there
 ; 	  (bury-buffer "*compilation*")
- 	  ;; and return to whatever were looking at before
-	  (replace-buffer-in-windows "*compilation*"))
-         ;; Always return the anticipated result of compilation-exit-message-function
+    ;; and delete the *compilation* window
+    (delete-window (get-buffer-window (get-buffer "*compilation*"))))
+    ;; Always return the anticipated result of compilation-exit-message-function
  	(cons msg code)))
 
+
+;; on the fly syntax check
+(flymake-mode 1)
 
 (provide 'init-programming)
