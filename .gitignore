@@ -1,4 +1,5 @@
 /emacs/.emacs.d/*backup*
 /emacs/.emacs.d/*session*
+/emacs/.emacs.d/cache
 /emacs/.emacs.d/auto-save-list/
 /emacs/.emacs.d/tutorial
