@@ -242,13 +242,13 @@ alias gcp='git cherry-pick'
 alias gco='git checkout'
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -D'
-alias gfmu='git fetch origin -v; git fetch upstream -v; git merge upstream/master'
 alias gl='git log --color'
 alias gll='git log --graph --pretty=oneline --abbrev-commit --color'
 alias gd='git diff'
 alias gr="git remote update -p" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
 alias gf="git fetch --all -p" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
 alias gmu="git merge @{u}" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
+alias gfmu='git fetch origin -v; git merge @{u}'
 
 ################################################################################
 # SSH
