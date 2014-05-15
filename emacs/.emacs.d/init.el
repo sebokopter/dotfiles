@@ -18,7 +18,6 @@
 (require 'init-recentf)
 (require 'init-bookmark)
 (require 'init-org)
-(require 'init-flyspell)
 ;(require 'init-company)
 ;(require 'init-auctex)
 ;(require 'init-git)
