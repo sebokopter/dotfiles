@@ -15,9 +15,12 @@
                 c++-mode-hook
                 erlang-mode-hook))
   (add-hook hook 'flyspell-prog-mode))
-(dolist (hook '(text-mode-hook
-                org-mode-hook))
-  (add-hook hook 'flyspell-mode))
+; flyspell very annoying in org-mode
+;(dolist (hook '(text-mode-hook
+;                org-mode-hook))
+;  (add-hook hook 'flyspell-mode))
+; is text-mode-hook also invoked when running org-mode?
+;(add-hook 'text-mode-hook 'flyspell-mode)
 
 (let ((langs '("american" "deutsch8")))
   (setq lang-ring (make-ring (length langs)))
