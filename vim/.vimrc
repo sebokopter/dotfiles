@@ -156,6 +156,9 @@ let NERDTreeMouseMode=2
 let NERDTreeShowHidden=1
 let NERDTreeKeepTreeInNewTab=1
 
+" open NERDTree if more than 1 file is opend
+autocmd VimEnter * if argc() > 1 | NERDTree | wincmd p | endif
+
 " Taglist
 noremap <silent><leader>t :TlistToggle<Cr>
 let Tlist_Use_Right_Window=1
