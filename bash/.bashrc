@@ -92,7 +92,7 @@ elif [[ $rand -lt 100 ]]; then
         cowcount=$(ls -1 $path | wc -l)
         cownumber=$(($RANDOM % $cowcount +1))
         cow=$(ls -1 $path | sed -n "{ $cownumber p}")
-        cowsay -f $path$cow $(fortune -s)
+        cowsay -f $path$cow "$(fortune -s)"
     else
         fortune -s
     fi
