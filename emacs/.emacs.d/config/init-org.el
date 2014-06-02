@@ -32,6 +32,7 @@
    (find-file "~/org/calendar.org")
    (find-file "~/org/someday.org")
    (find-file "~/org/journal.org")
+   (find-file "~/org/today.org")
 )
 
 ; org-remember
