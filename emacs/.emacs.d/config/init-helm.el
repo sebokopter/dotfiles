@@ -1,0 +1,8 @@
+(add-hook 'after-init-hook 'helm-after-init-hook)
+(defun helm-after-init-hook ()
+  (require 'helm)
+  (helm-mode 1)
+  (global-set-key (kbd "C-c h") 'helm-mini)
+  (setq helm-split-window-default-side 'right)
+)
+(provide 'init-helm)
