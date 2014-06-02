@@ -1,7 +1,22 @@
-; dired-x has some really cool extensions like C-x C-j (dired-jump)
-(require 'dired-x)
+; dired-x doesn't play nicely with ido/dired :-(
+;(require 'dired-x)
+(add-hook 'after-init-hook 'dired-after-init-hook)
+(defun dired-after-init-hook ()
+  (require 'dired+)
+  ; open directories in same buffer
+  (toggle-diredp-find-file-reuse-dir 1)
+  ; don't use maximum-decoration. greater number eq more font-decoration
+  (setq font-lock-maximum-decoration 1)
+)
 
-; open next directory/file in same buffer
-(put 'dired-find-alternate-file 'disabled nil)
+(autoload 'dired-jump "dired"
+  "Jump to Dired buffer corresponding to current buffer." t)
+
+(autoload 'dired-jump-other-window "dired"
+  "Like \\[dired-jump] (dired-jump) but in other window." t)
+
+(define-key global-map "\C-x\C-j" 'dired-jump)
+(define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
 
 (provide 'init-dired)
+
