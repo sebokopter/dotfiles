@@ -66,16 +66,18 @@ This functions should be added to the hooks of major modes for programming."
 ;  (save-window-excursion ad-do-it))
 
 ;; Helper for compilation. Close the compilation window if there was no error at all.
-(setq compilation-exit-message-function
-       (lambda (status code msg)
-         ;; If M-x compile exists with a 0
-         (when (and (eq status 'exit) (zerop code))
-           ;; then optionally bury the *compilation* buffer, so that C-x b doesn't go there
-; 	  (bury-buffer "*compilation*")
-    ;; and delete the *compilation* window
-    (delete-window (get-buffer-window (get-buffer "*compilation*"))))
-    ;; Always return the anticipated result of compilation-exit-message-function
- 	(cons msg code)))
+; FIXME: doesn't work as expected
+;(setq compilation-exit-message-function
+;    (lambda (status code msg)
+;      ;; If M-x compile exists with a 0
+;      (when (and (eq status 'exit) (zerop code))
+;        ;; then optionally bury the *compilation* buffer, so that C-x b doesn't go there
+;        (bury-buffer "*compilation*")
+;        ;; and delete the *compilation* window
+;        ;(delete-window (get-buffer-window (get-buffer "*compilation*")))
+;      )
+;    ;; Always return the anticipated result of compilation-exit-message-function
+; 	(cons msg code)))
 
 
 ;; on the fly syntax check
