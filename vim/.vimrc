@@ -129,7 +129,7 @@ Bundle 'Lokaltog/vim-easymotion'
 " NERDtree
 Bundle 'scrooloose/nerdtree'
 " source code browser
-Bundle 'vim-scripts/taglist.vim'
+"Bundle 'vim-scripts/taglist.vim'
 " lean and mean status/tabline
 Bundle 'bling/vim-airline'
 " seek long lines (remaps s key)
