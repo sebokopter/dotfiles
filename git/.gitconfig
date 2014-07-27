@@ -1,6 +1,6 @@
 [user]
 	name = Sebastian Heil
-	email = mail+git@sebastianheil.de
+	email = "(none)"
 [core]                                                                                                                                                                                                                                     
     excludesfile = /home/sheil/.gitignore_global  
 [push]
