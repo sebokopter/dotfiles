@@ -31,6 +31,14 @@ if [ -e ~/.bash_aliases ]; then
 fi
 
 ################################################################################
+# Functions (stored in .bash_functions
+################################################################################
+# invoke the Functions
+if [ -e ~/.bash_functions ]; then
+  source ~/.bash_functions
+fi
+
+################################################################################
 # Autojump
 ################################################################################
 if [ -e /usr/share/autojump/autojump.bash ]; then
@@ -56,7 +64,7 @@ function j {
 
 export EDITOR="vim"
 if [[ -n $(which ruby) ]]; then 
-    export PATH="`ruby -e 'puts Gem.user_dir'`/bin:$PATH"
+    export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
 fi
 
 # colored grep

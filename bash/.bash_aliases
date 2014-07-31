@@ -180,7 +180,7 @@ alias e='emacsclient -n'
 # General
 ################################################################################
 # List directory contents
-alias sl=ls
+alias sl='ls'
 alias ls="ls --color=auto"
 # -A: don't show . or ..; -F show indicator at end of filename
 alias la='ls -AF'
@@ -240,6 +240,7 @@ alias gba='git branch -a'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
+__git_complete gco _git_checkout
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -D'
 alias gl='git log --color'
@@ -261,3 +262,11 @@ alias sshkr="ssh-keygen -f ~/.ssh/known_hosts -R"
 ################################################################################
 
 alias vi='vim'
+alias v='view'
+alias vimrc='vim ~/.vimrc'
+
+################################################################################
+# bash
+################################################################################
+
+alias bashrc='vim ~/.bashrc'
