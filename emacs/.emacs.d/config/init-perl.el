@@ -1,3 +1,4 @@
+(require 'cperl-mode)
 ;;; cperl-mode is preferred to perl-mode                                        
 (defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist '("\\.\\([pP]\\([Llm]\\|[oO][dD]\\)\\|al+\\|t\\|manuscript\\)\\'" . perl-mode))
@@ -8,7 +9,8 @@
 ;  ;; affects `cperl-font-lock',`cperl-electric-lbrace-space',`cperl-electric-parens', `cperl-electric-linefeed', `cperl-electric-keywords', `cperl-info-on-command-no-prompt', `cperl-clobber-lisp-bindings', `cperl-lazy-help-time'
 ;  ;; but lets make it explict
 ;
-;  (setq cperl-indent-level 4)
+  (setq cperl-indent-level 4)
+  (setq cperl-indent-parens-as-block t)
 ;  ;; insert automatically newline before and after braces
 ;;  (setq cperl-auto-newline t)
 ;  (setq cperl-continued-statement-offset 8)
@@ -40,5 +42,14 @@
 (add-hook 'cperl-mode-hook (lambda ()
                              (run-hooks 'some-cperl-mode-hook)) t)
 (add-hook 'cperl-mode-hook 'whitespace-mode)
+
+(defun cperl-check-syntax-quiet ()
+  (interactive)
+  (cl-flet ((read-string (&rest args) ""))
+    (cperl-check-syntax)))
+
+; additional simple syntax check which extends existing mode-compile
+(define-key cperl-mode-map (kbd "C-c w") 'cperl-check-syntax-quiet)
+(define-key cperl-mode-map (kbd "C-c C-w") 'cperl-check-syntax-quiet)
 
 (provide 'init-perl)

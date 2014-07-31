@@ -31,8 +31,16 @@
    (find-file "~/org/projekte.org")
    (find-file "~/org/calendar.org")
    (find-file "~/org/someday.org")
-   (find-file "~/org/journal.org")
    (find-file "~/org/today.org")
+   (find-file "~/org/journal.org")
+   (end-of-buffer)
+   (let ((org-insert-heading-respect-content t))
+     (org-insert-heading-respect-content nil)
+   )
+   (org-insert-time-stamp (current-time))
+   (org-clock-in)
+   (end-of-buffer)
+   (switch-to-buffer "today.org")
 )
 
 ; org-remember

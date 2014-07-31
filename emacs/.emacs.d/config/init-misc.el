@@ -20,4 +20,17 @@
   (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
 )
 
+(defun other-window-kill-buffer ()
+  "Kill the buffer in the other window"
+  (interactive)
+  ;; Window selection is used because point goes to a different window
+  ;; if more than 2 windows are present
+  (let ((win-curr (selected-window))
+        (win-other (next-window)))
+    (select-window win-other)
+    (kill-this-buffer)
+    (select-window win-curr)))
+
+(global-set-key (kbd "C-x K") 'other-window-kill-buffer)
+
 (provide 'init-misc)

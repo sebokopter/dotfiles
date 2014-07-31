@@ -46,11 +46,13 @@ This functions should be added to the hooks of major modes for programming."
 (autoload 'mode-compile-kill "mode-compile"
 "Command to kill a compilation launched by `mode-compile'" t)
 (global-set-key "\C-ck" 'mode-compile-kill)
+(global-set-key "\C-c\C-k" 'mode-compile-kill)
 (defun mode-compile-quiet ()
   (interactive)
   (flet ((read-string (&rest args) ""))
     (mode-compile)))
 (global-set-key "\C-cc" 'mode-compile-quiet)
+(global-set-key "\C-c\C-c" 'mode-compile-quiet)
 
 ;; The default length of the compilation window
 (setq compilation-window-height 24)
@@ -82,5 +84,8 @@ This functions should be added to the hooks of major modes for programming."
 
 ;; on the fly syntax check
 (flymake-mode 1)
+
+;; make the current file executeable if it is a script
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 (provide 'init-programming)
