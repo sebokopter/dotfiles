@@ -240,7 +240,10 @@ alias gba='git branch -a'
 alias gcount='git shortlog -sn'
 alias gcp='git cherry-pick'
 alias gco='git checkout'
-__git_complete gco _git_checkout
+type __git_complete >/dev/null 2>&1
+if [[ $? == 0 ]]; then
+  __git_complete gco _git_checkout
+fi
 alias gexport='git archive --format zip --output'
 alias gdel='git branch -D'
 alias gl='git log --color'
