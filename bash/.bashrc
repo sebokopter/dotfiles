@@ -68,7 +68,10 @@ function j {
 
 export EDITOR="vim"
 if [[ -n $(which ruby) ]]; then 
-    export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
+    RUBY_PATH=`ruby -rubygems -e 'puts Gem.user_dir'`
+    if [[ -d $RUBY_PATH/bin ]]; then
+        export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
+    fi
 fi
 
 # colored grep
