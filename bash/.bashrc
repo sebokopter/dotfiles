@@ -67,7 +67,7 @@ function j {
 ################################################################################
 
 export EDITOR="vim"
-if [[ -n $(which ruby) ]]; then 
+if [[ -n $(which ruby) && -f /usr/bin/gem ]]; then 
     RUBY_PATH=`ruby -rubygems -e 'puts Gem.user_dir'`
     if [[ -d $RUBY_PATH/bin ]]; then
         export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
