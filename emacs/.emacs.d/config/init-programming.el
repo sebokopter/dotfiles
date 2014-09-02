@@ -1,9 +1,15 @@
-; show line length with whitespace mode
+; trailing whitespaces
+;; show trailing whitespaces
+(setq-default show-trailing-whitespace t)
+;; clear up trailing whitespaces
+(add-hook 'before-save-hook 'whitespace-cleanup)
+
+;; show line length with whitespace mode
 (require 'whitespace)
-(setq whitespace-style
+(setq-default whitespace-style
 		'(face lines-tail))
-(setq whitespace-line-column 80)
-(setq whitespace-display-mappings
+(setq-default whitespace-line-column 80)
+(setq-default whitespace-display-mappings
 		'((space-mark 32 [183] [46])
 		  (newline-mark 10 [182 10])
 		  (tab-mark 9 [9655 9] [92 9])
@@ -22,12 +28,11 @@ This functions should be added to the hooks of major modes for programming."
           1 font-lock-warning-face t))))
 
 (show-paren-mode 1)
-(setq show-paren-delay 0)
+(setq-default show-paren-delay 0)
 (delete-selection-mode 1)
-(setq mouse-yank-at-point t
-	  save-interprogram-paste-before-kill t
-	  backup-directory-alist `(("." . ,(concat user-emacs-directory "backups")))
-)
+(setq-default mouse-yank-at-point t)
+(setq-default save-interprogram-paste-before-kill t)
+(setq-default backup-directory-alist `(("." . ,(concat user-emacs-directory "backups"))))
 ;;Enter
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
@@ -49,18 +54,18 @@ This functions should be added to the hooks of major modes for programming."
 (global-set-key "\C-c\C-k" 'mode-compile-kill)
 (defun mode-compile-quiet ()
   (interactive)
-  (flet ((read-string (&rest args) ""))
+  (cl-flet ((read-string (&rest args) ""))
     (mode-compile)))
 (global-set-key "\C-cc" 'mode-compile-quiet)
 (global-set-key "\C-c\C-c" 'mode-compile-quiet)
 
 ;; The default length of the compilation window
-(setq compilation-window-height 24)
+(setq-default compilation-window-height 24)
 ;; On compilation, don't ask for command
-(setq compilation-read-command t)
+(setq-default compilation-read-command t)
 
 ;; Name compilation buffer after the buffer name
-;(setq compilation-buffer-name-function 
+;(setq-default compilation-buffer-name-function
 ;      (lambda (mode) (concat "*" (downcase mode) ": " (buffer-name) "*")))
 
 ;; create compile window but prevent it from showing up
@@ -69,7 +74,7 @@ This functions should be added to the hooks of major modes for programming."
 
 ;; Helper for compilation. Close the compilation window if there was no error at all.
 ; FIXME: doesn't work as expected
-;(setq compilation-exit-message-function
+;(setq-default compilation-exit-message-function
 ;    (lambda (status code msg)
 ;      ;; If M-x compile exists with a 0
 ;      (when (and (eq status 'exit) (zerop code))

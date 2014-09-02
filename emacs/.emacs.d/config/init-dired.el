@@ -1,5 +1,5 @@
-; dired-x doesn't play nicely with ido/dired :-(
-;(require 'dired-x)
+; disable if using ido: dired-x doesn't play nicely with ido's dired :-(
+(require 'dired-x)
 (add-hook 'after-init-hook 'dired-after-init-hook)
 (defun dired-after-init-hook ()
   (require 'dired+)
@@ -19,4 +19,3 @@
 (define-key global-map "\C-x4\C-j" 'dired-jump-other-window)
 
 (provide 'init-dired)
-

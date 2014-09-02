@@ -1,5 +1,6 @@
 ;;; interactivly do things
-(ido-mode 1)
+;; helm is more powerful than ido
+;(ido-mode 1)
 ;;; enabled flex-matching instead of default fuzzy matching?
 ;(ido-enable-flex-matching t)
 

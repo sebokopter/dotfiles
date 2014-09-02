@@ -14,7 +14,13 @@
 ;(setq url-httqp-attempt-keepalives nil)
 
 (defvar init-packages
-  '(dired+ helm midnight multiple-cursors mode-compile)
+  '(
+    dired+
+    helm
+    midnight
+    multiple-cursors
+    mode-compile
+  )
   "A list of packages to ensure are installed at launch.")
 
 (defun is-package-installed (p)
