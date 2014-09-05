@@ -54,7 +54,7 @@ This functions should be added to the hooks of major modes for programming."
 (global-set-key "\C-c\C-k" 'mode-compile-kill)
 (defun mode-compile-quiet ()
   (interactive)
-  (cl-flet ((read-string (&rest args) ""))
+  (flet ((read-string (&rest args) ""))
     (mode-compile)))
 (global-set-key "\C-cc" 'mode-compile-quiet)
 (global-set-key "\C-c\C-c" 'mode-compile-quiet)
