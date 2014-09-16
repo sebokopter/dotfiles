@@ -1,5 +1,5 @@
 (require 'cperl-mode)
-;;; cperl-mode is preferred to perl-mode                                        
+;;; cperl-mode is preferred to perl-mode
 (defalias 'perl-mode 'cperl-mode)
 (add-to-list 'auto-mode-alist '("\\.\\([pP]\\([Llm]\\|[oO][dD]\\)\\|al+\\|t\\|manuscript\\)\\'" . perl-mode))
 
@@ -45,7 +45,7 @@
 
 (defun cperl-check-syntax-quiet ()
   (interactive)
-  (cl-flet ((read-string (&rest args) ""))
+  (flet((read-string (&rest args) ""))
     (cperl-check-syntax)))
 
 ; additional simple syntax check which extends existing mode-compile
