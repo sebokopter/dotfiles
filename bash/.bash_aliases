@@ -209,9 +209,6 @@ fi
 
 # Directory
 alias md='mkdir -p'
-alias rd='rmdir'
-
-alias rr='rm -r'  
 
 ################################################################################
 # Git
