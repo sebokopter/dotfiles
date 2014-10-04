@@ -7,7 +7,7 @@
 
 ;; Agenda
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-agenda-files (quote ("~/org")))
+(setq org-agenda-files (quote ("~/org/next-actions")))
 ;;; Agenda GTD
 (setq org-agenda-custom-commands (quote (("D" "Daily Action List" agenda "" ((org-agenda-ndays 1) (org-agenda-sorting-strategy (quote (time-up priority-down tag-up))) (org-deadline-warning-days 1))))))
 ;; calendar/diary mode in org zu integrieren ist wohl nicht so performant wie direkt in org-mode alles einzutragen
@@ -17,7 +17,7 @@
 
 ;; Org Mode Caputer (Remember is deprecated but still the recent version in ubuntu)
 (global-set-key "\C-cr" 'org-remember)
-(setq org-remember-templates 
+(setq org-remember-templates
   '(("Todo" ?t "* TODO %?")
   ("Journal" ?j "** %^{Head Line} %U %^g\n%i%?" "~/journal.org")))
 (eval-after-load 'remember
