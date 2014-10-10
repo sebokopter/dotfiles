@@ -24,4 +24,4 @@
 ;(require 'init-company)
 ;(require 'init-auctex)
 ;(require 'init-git)
-(require 'custom)
+(require 'init-custom)
