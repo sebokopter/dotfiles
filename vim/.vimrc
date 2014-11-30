@@ -146,6 +146,18 @@ Bundle 'bling/vim-airline'
 "Bundle 'airblade/vim-gitgutter'
 " shows undo tree
 "Bundle 'sjl/gundo.vim'
+" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
+" tags, and more.
+Plugin 'tpope/vim-surround'
+" Syntastic is a syntax checking plugin for Vim that runs files through
+" external syntax checkers and displays any resulting errors to the user.
+"Plugin 'scrooloose/syntastic'
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plugin 'kien/ctrlp.vim'
+" Solarized Colorscheme for Vim
+Plugin 'altercation/vim-colors-solarized'
+" adds CoffeeScript support to vim. It covers syntax, indenting, compiling,...
+Plugin 'kchmck/vim-coffee-script'
 
 if installed_vundle == 1
     :BundleInstall
