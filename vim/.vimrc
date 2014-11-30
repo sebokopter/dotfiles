@@ -169,3 +169,9 @@ autocmd VimEnter * if argc() > 1 | NERDTree | wincmd p | endif
 noremap <silent><leader>t :TlistToggle<Cr>
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
+
+" vim-coffee-script
+" needs reload of filetype detection according to
+" http://stackoverflow.com/questions/5602767/why-is-vim-not-detecting-my-coffescript-filetype
+filetype off
+filetype on
