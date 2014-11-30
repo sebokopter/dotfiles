@@ -40,6 +40,12 @@ set smartindent
 " show matching brackets whent cursor is over one
 set showmatch
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Filetypes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" .md indicates markdown, not modula2 filetype
+" per default only .markdown is recognized as markdown file
+au BufRead,BufNewFile *.md set filetype=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VIM user interface
