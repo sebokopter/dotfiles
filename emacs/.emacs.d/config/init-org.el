@@ -7,7 +7,7 @@
 
 ;; Agenda
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-agenda-files (quote ("~/org/next-actions")))
+(setq org-agenda-files (quote ("~/org/next-actions.org")))
 ;;; Agenda GTD
 (setq org-agenda-custom-commands (quote (("D" "Daily Action List" agenda "" ((org-agenda-ndays 1) (org-agenda-sorting-strategy (quote (time-up priority-down tag-up))) (org-deadline-warning-days 1))))))
 ;; calendar/diary mode in org zu integrieren ist wohl nicht so performant wie direkt in org-mode alles einzutragen
