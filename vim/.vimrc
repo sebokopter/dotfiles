@@ -7,7 +7,7 @@ set autoread
 
 " :W saves the file as sudo
 " (useful for editing root owned files as normal user)
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
