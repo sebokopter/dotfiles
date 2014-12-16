@@ -42,6 +42,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+; org-iswitchb
+(global-set-key "\C-cb" 'org-iswitchb)
+
 ;; Next Word vim-like
 ;; http://stackoverflow.com/questions/1771102/changing-emacs-forward-word-behaviour
 (require 'misc)
