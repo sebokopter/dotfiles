@@ -7,7 +7,7 @@
 
 ;; Agenda
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-agenda-files (quote ("~/org/next-actions")))
+(setq org-agenda-files (quote ("~/org/next-actions.org")))
 ;;; Agenda GTD
 (setq org-agenda-custom-commands (quote (("D" "Daily Action List" agenda "" ((org-agenda-ndays 1) (org-agenda-sorting-strategy (quote (time-up priority-down tag-up))) (org-deadline-warning-days 1))))))
 ;; calendar/diary mode in org zu integrieren ist wohl nicht so performant wie direkt in org-mode alles einzutragen
@@ -42,28 +42,8 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
-;; Next Word vim-like
-;; http://stackoverflow.com/questions/1771102/changing-emacs-forward-word-behaviour
-(require 'misc)
-(global-set-key "\M-p" '(lambda ()
-  (interactive)
-  (with-syntax-table my-vim-syntax-table (forward-word-to-beginning))))
-(defun forward-word-to-beginning (&optional n)
-  "Move point forward n words and place cursor at the beginning."
-  (interactive "p")
-  (let (myword)
-    (setq myword
-      (if (and transient-mark-mode mark-active)
-        (buffer-substring-no-properties (region-beginning) (region-end))
-        (thing-at-point 'symbol)))
-    (if (not (eq myword nil))
-      (forward-word n))
-    (forward-word n)
-    (backward-word n)))
-(defvar my-vim-syntax-table
-  (let ((table (make-syntax-table)))
-  (modify-syntax-entry ?\( "$" table)
-  (modify-syntax-entry ?\) "$" table)
-  table))
+; org-export
+;; remove Date, Author, Org Version footer from HTML-export
+(setq org-export-html-postamble nil)
 
 (provide 'init-org)
