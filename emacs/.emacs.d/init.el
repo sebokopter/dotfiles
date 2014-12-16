@@ -12,6 +12,7 @@
 (require 'init-programming)
 (require 'init-numbers)
 (require 'init-bars)
+(require 'init-tabbar)
 (require 'init-minibuffer)
 ; dired-x has to be loaded after ido (init-minibuffer)
 (require 'init-dired)
@@ -24,6 +25,7 @@
 ;(require 'init-company)
 ;(require 'init-auctex)
 ;(require 'init-git)
+(require 'init-custom)
 
 ; don't forget to recompile after changes
 (defun byte-recompile ()
