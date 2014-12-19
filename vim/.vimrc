@@ -7,7 +7,7 @@ set autoread
 
 " :W saves the file as sudo
 " (useful for editing root owned files as normal user)
-command W w !sudo tee % > /dev/null
+command! W w !sudo tee % > /dev/null
 
 " Return to last edit position when opening files (You want this!)
 autocmd BufReadPost *
@@ -40,6 +40,12 @@ set smartindent
 " show matching brackets whent cursor is over one
 set showmatch
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"" Filetypes
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" .md indicates markdown, not modula2 filetype
+" per default only .markdown is recognized as markdown file
+au BufRead,BufNewFile *.md set filetype=markdown
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VIM user interface
@@ -140,6 +146,18 @@ Bundle 'bling/vim-airline'
 "Bundle 'airblade/vim-gitgutter'
 " shows undo tree
 "Bundle 'sjl/gundo.vim'
+" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
+" tags, and more.
+Plugin 'tpope/vim-surround'
+" Syntastic is a syntax checking plugin for Vim that runs files through
+" external syntax checkers and displays any resulting errors to the user.
+"Plugin 'scrooloose/syntastic'
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Plugin 'kien/ctrlp.vim'
+" Solarized Colorscheme for Vim
+Plugin 'altercation/vim-colors-solarized'
+" adds CoffeeScript support to vim. It covers syntax, indenting, compiling,...
+Plugin 'kchmck/vim-coffee-script'
 
 if installed_vundle == 1
     :BundleInstall
@@ -163,3 +181,9 @@ autocmd VimEnter * if argc() > 1 | NERDTree | wincmd p | endif
 noremap <silent><leader>t :TlistToggle<Cr>
 let Tlist_Use_Right_Window=1
 let Tlist_GainFocus_On_ToggleOpen = 1
+
+" vim-coffee-script
+" needs reload of filetype detection according to
+" http://stackoverflow.com/questions/5602767/why-is-vim-not-detecting-my-coffescript-filetype
+filetype off
+filetype on

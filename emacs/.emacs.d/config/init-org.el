@@ -41,6 +41,9 @@
 
 (add-to-list 'load-path "~/.emacs.d/elisp")
 
+; org-iswitchb
+(global-set-key "\C-cb" 'org-iswitchb)
+
 ; org-export
 ;; remove Date, Author, Org Version footer from HTML-export
 (setq org-export-html-postamble nil)

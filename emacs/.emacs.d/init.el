@@ -26,3 +26,9 @@
 ;(require 'init-auctex)
 ;(require 'init-git)
 (require 'init-custom)
+
+; don't forget to recompile after changes
+(defun byte-recompile ()
+  (interactive)
+  (byte-recompile-directory "~/.emacs.d/config" 0))
+
