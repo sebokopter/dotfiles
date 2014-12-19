@@ -29,7 +29,6 @@
    (find-file "~/org/inbox.org")
    (find-file "~/org/next-actions.org")
    (find-file "~/org/projekte.org")
-   (find-file "~/org/calendar.org")
    (find-file "~/org/someday.org")
    (find-file "~/org/today.org")
    (find-file "~/org/journal.org")
