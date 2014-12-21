@@ -75,7 +75,6 @@ if [[ -n $(which ruby) && -f /usr/bin/gem ]]; then
 fi
 
 # colored grep
-export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;33'
 # colored ls
 export LSCOLORS='Gxfxcxdxdxegedabagacad'
