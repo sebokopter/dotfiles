@@ -20,6 +20,7 @@
     midnight
     multiple-cursors
     mode-compile
+    tabbar
   )
   "A list of packages to ensure are installed at launch.")
 
