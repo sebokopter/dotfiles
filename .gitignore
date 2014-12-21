@@ -6,4 +6,5 @@
 /emacs/.emacs.d/elpa
 /emacs/.emacs.d/.mc-lists.el
 /emacs/.emacs.d/config/init-custom.el
+**/*.elc
 /tmux/.tmux-windows.conf
