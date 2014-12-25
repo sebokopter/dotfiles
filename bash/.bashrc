@@ -43,24 +43,11 @@ if [ -e ~/.bash_functions ]; then
 fi
 
 ################################################################################
-# Autojump
+# FASD
 ################################################################################
-if [ -e /usr/share/autojump/autojump.bash ]; then
-  source /usr/share/autojump/autojump.bash
+if type fasd >/dev/null 2>&1; then
+    eval "$(fasd --init auto)"
 fi
-# make `j` better
-function j { 
-    new_path="$(autojump $@)";
-    status=$?; 
-    if (( status == 0 )); then
-        if [ -n "$new_path" ]; then 
-            echo -e "\\033[31m${new_path}\\033[0m"; cd "$new_path";
-        else false; 
-        fi;
-    else
-        cd $@;
-    fi
-}  
 
 ################################################################################
 # Variables
