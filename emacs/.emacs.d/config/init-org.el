@@ -48,4 +48,8 @@
 ;; remove Date, Author, Org Version footer from HTML-export
 (setq org-export-html-postamble nil)
 
+; org-pomodoro
+(global-set-key (kbd "C-c C-x C-i") 'org-pomodoro)
+(global-set-key (kbd "C-c C-x C-i") 'org-pomodoro)
+
 (provide 'init-org)

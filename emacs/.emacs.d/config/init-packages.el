@@ -21,6 +21,7 @@
     multiple-cursors
     mode-compile
     tabbar
+    org-pomodoro
   )
   "A list of packages to ensure are installed at launch.")
 
