@@ -1,4 +1,10 @@
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "DELEGATED(D)")))
+(setq org-todo-keyword-faces
+      (quote (("TODO" :foreground "red" :weight bold)
+              ("WAITING" :foreground "orange" :weight bold)
+              ("DONE" :foreground "forest green" :weight bold)
+              ("DELEGATED" :foreground "yellow green" :weight bold))))
+
 (setq org-directory "~/org")
 ; do i want to see everything of a file?
 ;(setq org-startup-folded (quote showeverything))
