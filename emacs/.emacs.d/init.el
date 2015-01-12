@@ -12,6 +12,7 @@
 (require 'init-programming)
 (require 'init-numbers)
 (require 'init-bars)
+(require 'init-desktop)
 (require 'init-tabbar)
 (require 'init-minibuffer)
 ; dired-x has to be loaded after ido (init-minibuffer)
