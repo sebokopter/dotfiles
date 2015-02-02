@@ -33,4 +33,7 @@
 
 (global-set-key (kbd "C-x K") 'other-window-kill-buffer)
 
+; for gitit wiki pages which are written in markdown
+(add-to-list 'auto-mode-alist '(".page" . markdown-mode))
+
 (provide 'init-misc)
