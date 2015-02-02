@@ -8,3 +8,4 @@
 /emacs/.emacs.d/config/init-custom.el
 *.elc
 /tmux/.tmux-windows.conf
+/ssh/.ssh/known_hosts
