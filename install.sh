@@ -7,6 +7,6 @@ for dir in $( find -mindepth 1 -maxdepth 1 ! -name ".git*" -type d ); do
         if [[ -e $dst ]]; then
             mv -f $dst $dst.backup
         fi
-        ln -s $src $dst
+        ln -sf $src $dst
     done
 done
