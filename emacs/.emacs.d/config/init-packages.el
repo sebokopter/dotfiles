@@ -23,6 +23,7 @@
     mode-compile
     tabbar
     org-pomodoro
+    keyfreq
   )
   "A list of packages to ensure are installed at launch.")
 

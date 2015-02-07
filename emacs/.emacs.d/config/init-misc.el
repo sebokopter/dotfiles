@@ -36,4 +36,10 @@
 ; for gitit wiki pages which are written in markdown
 (add-to-list 'auto-mode-alist '(".page" . markdown-mode))
 
+; track Emacs commands frequency
+; keyfreq is loaded by packages.el
+(require 'keyfreq)
+(keyfreq-mode 1)
+(keyfreq-autosave-mode 1)
+
 (provide 'init-misc)
