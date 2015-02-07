@@ -188,6 +188,17 @@ alias ll='ls -al'
 alias l='ls -a'
 alias l1='ls -1'
 
+alias dfh='df -h'
+
+alias t="top"
+
+if [[ $use_sudo -eq 1 ]]; then
+    alias m='sudo mount'
+    alias um='sudo umount'
+else
+    alias m='mount'
+fi
+
 # sudo alias
 alias _="sudo"
 # checks aliases with sudo
@@ -256,7 +267,30 @@ alias gfmu='git fetch origin -v; git merge @{u}'
 # SSH
 ################################################################################
 
+alias s="ssh"
 alias sshkr="ssh-keygen -f ~/.ssh/known_hosts -R" 
+alias sshwh='ssh sebi@login.selfnet.de tmux attach'
+
+
+################################################################################
+# IP
+################################################################################
+
+if [[ $use_sudo -eq 1 ]]; then
+    alias iptl='sudo iptables -vnL | less'    
+else
+    alias iptl="su -lc 'iptables -vnL | less' root"
+fi
+
+alias ipa='ip a'
+alias ipr='ip r'
+
+################################################################################
+# tmux
+################################################################################
+
+alias ta='tmux attach'
+alias tl='tmux list-session'
 
 ################################################################################
 # VIM
@@ -264,13 +298,13 @@ alias sshkr="ssh-keygen -f ~/.ssh/known_hosts -R"
 
 alias vi='vim'
 alias v='view'
-alias vimrc='vim ~/.vimrc'
+alias vimrc="vim ~/.vimrc"
 
 ################################################################################
 # bash
 ################################################################################
 
-alias bashrc='vim ~/.bashrc'
+alias bashrc="vim ~/.bashrc"
 
 ################################################################################
 # custom aliases
