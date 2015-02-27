@@ -131,7 +131,8 @@ Bundle 'tpope/vim-fugitive'
 " easymotion try it with <leader><leader>w or <leader><leader>f or any other motion
 Bundle 'Lokaltog/vim-easymotion'
 " ctrlp makes file selection easier
-"Bundle 'kien/ctrlp.vim'
+" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
+Bundle 'kien/ctrlp.vim'
 " NERDtree
 Bundle 'scrooloose/nerdtree'
 " source code browser
@@ -152,8 +153,6 @@ Plugin 'tpope/vim-surround'
 " Syntastic is a syntax checking plugin for Vim that runs files through
 " external syntax checkers and displays any resulting errors to the user.
 "Plugin 'scrooloose/syntastic'
-" Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-Plugin 'kien/ctrlp.vim'
 " Solarized Colorscheme for Vim
 Plugin 'altercation/vim-colors-solarized'
 " adds CoffeeScript support to vim. It covers syntax, indenting, compiling,...
