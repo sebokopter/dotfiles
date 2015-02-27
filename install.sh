@@ -10,3 +10,6 @@ for dir in $( find -mindepth 1 -maxdepth 1 ! -name ".git*" -type d ); do
         ln -sf $src $dst
     done
 done
+
+# FIXME: Probleme mit cpan/.cpan, ssh/.ssh, gpg/.gnupg und emacs/.local/share
+# - am besten nur dateien symlinken, falls ordner schon existiert
