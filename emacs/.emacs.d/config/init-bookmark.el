@@ -1,3 +1,3 @@
-(setq bookmark-default-file (concat user-emacs-directory "cache/bookmarks"))
+(setq bookmark-default-file (concat my-cache-user-emacs-directory "bookmarks"))
 
 (provide 'init-bookmark)

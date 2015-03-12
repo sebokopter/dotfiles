@@ -1,8 +1,8 @@
 ; disable if using ido: dired-x doesn't play nicely with ido's dired :-(
-(require 'dired-x)
+(use-package dired-x)
 (add-hook 'after-init-hook 'dired-after-init-hook)
 (defun dired-after-init-hook ()
-  (require 'dired+)
+  (use-package dired+)
   ; open directories in same buffer
   (toggle-diredp-find-file-reuse-dir 1)
   ; don't use maximum-decoration. greater number eq more font-decoration
