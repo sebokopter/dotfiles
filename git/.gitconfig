@@ -1,7 +1,9 @@
 [user]
 	name = Sebastian Heil
 	email = "(none)"
-[core]                                                                                                                                                                                                                                     
-    excludesfile = /home/sheil/.gitignore_global  
+[core]
 [push]
 	default = current
+[alias]
+    ca = commit -a --amend
+    caa = commit -a --amend -C HEAD
