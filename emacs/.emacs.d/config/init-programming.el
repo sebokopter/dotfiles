@@ -5,7 +5,7 @@
 (add-hook 'before-save-hook 'whitespace-cleanup)
 
 ;; show line length with whitespace mode
-(require 'whitespace)
+(use-package whitespace)
 (setq-default whitespace-style
 		'(face lines-tail))
 (setq-default whitespace-line-column 80)

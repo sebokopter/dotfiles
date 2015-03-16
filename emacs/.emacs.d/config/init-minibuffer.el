@@ -7,9 +7,9 @@
 ;;; shorten yes or no answers to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(require 'uniquify)
+(use-package uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
-(require 'ibuffer)
+(use-package ibuffer)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; sort the ibuffer according to the following groups
 (setq ibuffer-saved-filter-groups
@@ -33,14 +33,14 @@
             (ibuffer-switch-to-saved-filter-groups "default")))
 
 ;; this should clean up dired and view-mode buffers after some time
-(when (require 'tempbuf nil 'noerror)
+(when (use-package tempbuf nil 'noerror)
   (add-hook 'dired+-mode-hook 'turn-on-tempbuf-mode)
   (add-hook 'view-mode-hook 'turn-on-tempbuf-mode)
 )
 
 ;; TODO: try out fancy-narrow
 ;(add-to-list 'load-path "~/.emacs.d/elisp/fancy-narrow")
-;(require 'fancy-narrow)
+;(use-package 'fancy-narrow)
 ;(fancy-narrow-mode 1)
 
 (provide 'init-minibuffer)

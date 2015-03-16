@@ -10,3 +10,13 @@ set completion-ignore-case on
 "\e[5~": history-search-backward
 # page down
 "\e[6~": history-search-forward
+# C-p
+"\C-p": history-search-backward
+# C-n
+"\C-n": history-search-forward
+
+# repair Ctrl+left/right since using history-search seems to break them
+# Ctrl + arrow left
+"\e[1;5D": backward-word
+# Ctrl + arrow right
+"\e[1;5C": forward-word

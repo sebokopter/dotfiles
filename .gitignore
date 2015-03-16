@@ -6,5 +6,8 @@
 /emacs/.emacs.d/elpa
 /emacs/.emacs.d/.mc-lists.el
 /emacs/.emacs.d/config/init-custom.el
+/emacs/.emacs.d/.emacs.desktop.lock
+/emacs/.emacs.d/emacs-desktop
 *.elc
 /tmux/.tmux-windows.conf
+/ssh/.ssh/known_hosts

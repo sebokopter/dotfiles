@@ -5,8 +5,14 @@
 ;; init-packages to be loaded first to be sure there are no dependencies
 ;; because it could be invoked via package-initialize
 (require 'init-packages)
-(require 'init-misc)
 (require 'init-kbd-shortcuts)
+(require 'init-ediff)
+(require 'init-midnight)
+(require 'init-multiple-cursors)
+(require 'init-auto-mode)
+(require 'init-misc)
+(require 'init-smex)
+(require 'init-ido)
 (require 'init-theme)
 (require 'init-perl)
 (require 'init-programming)
@@ -22,7 +28,6 @@
 (require 'init-recentf)
 (require 'init-bookmark)
 (require 'init-org)
-(require 'init-helm)
 (require 'init-server)
 ;(require 'init-company)
 ;(require 'init-auctex)

@@ -1,4 +1,4 @@
-(require 'saveplace)
+(use-package saveplace)
 (setq save-place-file (concat user-emacs-directory ".cache/places"))
 (setq-default save-place t)
 
