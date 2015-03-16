@@ -1,0 +1,26 @@
+scm() {
+    if [[ -f .git/HEAD ]]; then
+        SCM='git'
+        SCM_CHAR="\[\033[1;32m\]±\[\033[0m\]"
+        SCM_PROMPT_DIRTY=" \[\033[1;31m\]✗\[\033[0m\]"
+        SCM_PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
+    elif [[ -n "$(git symbolic-ref HEAD 2> /dev/null)" ]]; then
+        SCM='git'
+        SCM_CHAR="\[\033[1;32m\]±\[\033[0m\]"
+        SCM_PROMPT_DIRTY=" \[\033[1;31m\]✗\[\033[0m\]"
+        SCM_PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
+    else
+        SCM='NONE'
+        SCM_CHAR='○'
+    fi  
+
+    if [ $SCM = 'NONE' ]; then
+            return
+    else
+        if [ $(basename $(pwd)) != "basesystem" ]; then
+            echo "[$SCM_CHAR][$(git_info)]"
+        fi
+     fi  
+}
+
+

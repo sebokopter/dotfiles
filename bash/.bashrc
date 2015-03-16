@@ -192,9 +192,9 @@ scm() {
     fi
 
     if [ $SCM = 'NONE' ]; then
-            return
+        return
     else
-            echo "[$SCM_CHAR][$(git_info)]"
+        echo "[$SCM_CHAR][$(git_info)]"
     fi
 }
 
@@ -230,7 +230,9 @@ PROMPT_COMMAND=prompt
 if [ -e ~/.bash_aliases.custom ]; then
     source ~/.bash_aliases.custom
 fi
-
+if [ -e ~/.bashrc.custom ]; then
+    source ~/.bashrc.custom
+fi
 
 ################################################################################
 # Node.js
