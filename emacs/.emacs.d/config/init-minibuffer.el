@@ -17,6 +17,10 @@
                ("bookmarks" (mode . bookmark-bmenu-mode))
                ("dired" (mode . dired-mode))
                ("perl" (mode . cperl-mode))
+               ("c/c++" (or
+                         (mode . c-mode)
+                         (mode . c++-mode)
+                         (mode . cmake-mode)))
                ("elisp" (mode . emacs-lisp-mode))
                ("org" (or
                        (name . "^\\*Calendar\\*$")

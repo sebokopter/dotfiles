@@ -90,6 +90,9 @@ This functions should be added to the hooks of major modes for programming."
 ;; on the fly syntax check
 (flymake-mode 1)
 
+;; more syntax highlighting (espacially for c-/c++-mode)
+(setq-default font-lock-maximum-decoration '((c-mode . t)(c++-mode . t)))
+
 ;; make the current file executeable if it is a script
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 

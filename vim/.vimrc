@@ -29,8 +29,8 @@ filetype plugin indent on
 syntax on
 
 " tabs are 4 whitespaces
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 
 " for indenting

@@ -10,6 +10,7 @@
 (require 'init-theme)
 (require 'init-perl)
 (require 'init-programming)
+(require 'init-c)
 (require 'init-numbers)
 (require 'init-bars)
 (require 'init-desktop)

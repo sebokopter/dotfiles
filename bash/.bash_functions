@@ -8,3 +8,8 @@ function r() {
     fi
   fi
 }
+
+function cd() {
+   command cd $1;
+   ls --color=auto -a
+}

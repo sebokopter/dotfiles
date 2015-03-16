@@ -193,7 +193,7 @@ alias _="sudo"
 # checks aliases with sudo
 alias sudo='sudo '
 
-alias ..='cd ..'         # Go up one directory
+#alias ..='cd ..'         # Go up one directory, deprecated in favor of autocd shell option
 alias ...='cd ../..'     # Go up two directories
 alias ....='cd ../../..' # Go up two directories
 alias -- -='cd -'        # Go back
@@ -230,6 +230,7 @@ alias gpo='git push origin'
 alias gdv='git diff -w "$@" | vim -R -'
 alias gc='git commit -v'
 alias gcam='git commit -v --amend'
+alias gcaam='git commit -v -a --amend'
 alias gca='git commit -v -a'
 alias gci='git commit --interactive'
 alias gb='git branch'
@@ -251,6 +252,8 @@ alias gr="git remote update -p" # see http://stackoverflow.com/questions/1531660
 alias gf="git fetch --all -p" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
 alias gmu="git merge @{u}" # see http://stackoverflow.com/questions/15316601/is-git-pull-the-least-problematic-way-of-updating-a-git-repository
 alias gfmu='git fetch origin -v; git merge @{u}'
+alias gmnf="git merge --no-ff"
+alias gmff="git merge --ff-only"
 
 ################################################################################
 # SSH
