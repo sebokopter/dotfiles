@@ -1,4 +1,5 @@
-(use-package ido)
+(use-package ido 
+  :ensure t)
 (ido-mode +1)
 
 ;; REMEMBER: C-j if you want to avoid [confirm] question after typing non-existing name

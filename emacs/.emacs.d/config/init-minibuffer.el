@@ -7,9 +7,11 @@
 ;;; shorten yes or no answers to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(use-package uniquify)
+(use-package uniquify
+  :ensure t)
 (setq uniquify-buffer-name-style 'post-forward)
-(use-package ibuffer)
+(use-package ibuffer
+  :ensure t)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 ;; sort the ibuffer according to the following groups
 (setq ibuffer-saved-filter-groups

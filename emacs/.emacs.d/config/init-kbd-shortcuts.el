@@ -34,7 +34,8 @@
 
 ; track Emacs commands frequency
 ; keyfreq is loaded by packages.el
-(use-package keyfreq)
+(use-package keyfreq
+  :ensure t)
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
 
