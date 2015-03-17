@@ -11,7 +11,7 @@ function r() {
 
 function cd() {
    command cd $1;
-   ls --color=auto -a
+   ls --color=auto -AF
 }
 
 function get_most_used_commands() {
