@@ -21,6 +21,9 @@ set autochdir
 " don't know exactly if I need this
 filetype plugin indent on
 
+" use mouse even in terminal
+set mouse=a
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Programming
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
