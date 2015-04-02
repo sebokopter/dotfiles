@@ -1,6 +1,6 @@
 ; disable if using ido: dired-x doesn't play nicely with ido's dired :-(
-(use-package dired-x
-  :ensure t)
+(require 'dired-x)
+
 (add-hook 'after-init-hook 'dired-after-init-hook)
 (defun dired-after-init-hook ()
   (use-package dired+

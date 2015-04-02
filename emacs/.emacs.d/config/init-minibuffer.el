@@ -7,8 +7,7 @@
 ;;; shorten yes or no answers to y or n
 (fset 'yes-or-no-p 'y-or-n-p)
 
-(use-package uniquify
-  :ensure t)
+(require 'uniquify)
 (setq uniquify-buffer-name-style 'post-forward)
 (use-package ibuffer
   :ensure t)
