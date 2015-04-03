@@ -22,7 +22,7 @@ set autochdir
 filetype plugin indent on
 
 " use mouse even in terminal
-set mouse=a
+"set mouse=a
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Programming
