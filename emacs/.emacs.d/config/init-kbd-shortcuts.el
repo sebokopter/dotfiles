@@ -39,6 +39,10 @@
 (keyfreq-mode 1)
 (keyfreq-autosave-mode 1)
 
+;; enable C-x C-l/C-u
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+
 ;; Global Keybindings
 
 (defvar my-global-keys-minor-mode-map (make-sparse-keymap)
