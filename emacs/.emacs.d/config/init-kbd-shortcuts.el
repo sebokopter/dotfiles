@@ -118,5 +118,8 @@
         c-basic-offset 4)
   (c-set-offset 'substatement-open 0))
 
+;; enable Uppercase and Lowercase shortcut (C-x C-l/C-u)
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
 
 (provide 'init-kbd-shortcuts)
