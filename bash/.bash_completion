@@ -1,0 +1,9 @@
+# git aliases
+
+if [ -f "/usr/share/bash-completion/completions/git" ]; then
+  source /usr/share/bash-completion/completions/git
+
+  if [ "$(type -t __git_wrap__git_main)" = 'function' ]; then
+    complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
+  fi
+fi

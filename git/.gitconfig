@@ -5,5 +5,38 @@
 [push]
 	default = current
 [alias]
-    ca = commit -a --amend
-    caa = commit -a --amend -C HEAD
+	co = checkout
+  a = add
+  all = !git add .
+  b = branch
+  ba = branch -a
+  bv = branch -v
+  c = commit -v
+  ca = commit -v -a
+  caa = commit -a --amend -C HEAD
+  caam = commit -v -a --amend
+  cam = commit -v --amend
+  ci = commit --interactive
+  cl = clone
+  co = checkout
+  count = shortlog -sn
+  cp = cherry-pick
+  d = diff
+  del = branch -D
+  dv = !git diff -w "$@" | vim -R -
+  export = archive --format zip --output
+  f = fetch --all -p
+  fmu = !fetch origin -v && git merge @{u}
+  l = log --color
+  ll = log --graph --pretty=oneline --abbrev-commit --color
+  mff = merge --ff-only
+  mnf = merge --no-ff
+  mu = merge @{u}
+  p = push
+  pl = pull
+  po = push origin
+  r = remote update -p
+  s = status
+  ss = status -s
+  st = status
+  up = !git fetch && git rebase
