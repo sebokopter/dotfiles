@@ -1,7 +1,11 @@
 (setq org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "|" "DONE(d)" "DELEGATED(D)")))
 (setq org-todo-keyword-faces
-      (quote (("TODO" :foreground "red" :weight bold)
+      (quote (("INBOX" :foreground "#002b36" :background "red" :weight bold)
+              ("INCUBATE" :foreground "#002b36" :background "orange red" :weight bold)
+              ("TODO" :foreground "red" :weight bold)
+              ("STARTED" :foreground "gold" :weight bold)
               ("WAITING" :foreground "orange" :weight bold)
+              ("PROJECT" :foreground "indian red" :weight bold)
               ("DONE" :foreground "forest green" :weight bold)
               ("DELEGATED" :foreground "yellow green" :weight bold))))
 
