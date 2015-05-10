@@ -136,7 +136,7 @@ Bundle 'Lokaltog/vim-easymotion'
 Bundle 'kien/ctrlp.vim'
 " NERDtree
 Bundle 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
+Bundle 'jistr/vim-nerdtree-tabs'
 " source code browser
 "Bundle 'vim-scripts/taglist.vim'
 " lean and mean status/tabline
@@ -153,29 +153,33 @@ Bundle 'airblade/vim-gitgutter'
 "Bundle 'sjl/gundo.vim'
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
 " tags, and more.
-Plugin 'tpope/vim-surround'
+Bundle 'tpope/vim-surround'
 " Syntastic is a syntax checking plugin for Vim that runs files through
 " external syntax checkers and displays any resulting errors to the user.
-Plugin 'scrooloose/syntastic'
+Bundle 'scrooloose/syntastic'
 " Solarized Colorscheme for Vim
-Plugin 'altercation/vim-colors-solarized'
+Bundle 'altercation/vim-colors-solarized'
 " adds CoffeeScript support to vim. It covers syntax, indenting, compiling,...
-Plugin 'kchmck/vim-coffee-script'
+Bundle 'kchmck/vim-coffee-script'
 " ctags (vim-misc is requirement)
-Plugin 'xolox/vim-misc'
-Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
+Bundle 'xolox/vim-misc'
+Bundle 'xolox/vim-easytags'
+Bundle 'majutsushi/tagbar'
 " alternative file (get header from c source and vise versa)
 " Simply type :AT to open up the alternate file
-Plugin 'vim-scripts/a.vim'
+Bundle 'vim-scripts/a.vim'
 " insert matching delimiters (quotes, parenthesis, ...)
-Plugin 'Raimondi/delimitMate'
+Bundle 'Raimondi/delimitMate'
 " Highlight and strip trailing whitespace
-Plugin 'ntpeters/vim-better-whitespace'
+Bundle 'ntpeters/vim-better-whitespace'
 " Align CSV files at commas, align Markdown tables, and more
-Plugin 'godlygeek/tabular'
+Bundle 'godlygeek/tabular'
 " Automatically insert the closing HTML tag
-Plugin 'HTML-AutoCloseTag'
+Bundle 'HTML-AutoCloseTag'
+" Read Unix man pages
+Bundle 'jez/vim-superman'
+" Navigate in the same way (C-h, C-j, C-k, C-l) and seamlessly between tmux and vim
+Bundle 'christoomey/vim-tmux-navigator'
 
 if installed_vundle == 1
     :BundleInstall
