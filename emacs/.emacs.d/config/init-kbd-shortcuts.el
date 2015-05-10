@@ -50,7 +50,8 @@
 
 (define-key my-global-keys-minor-mode-map (kbd "C-c C-r") 'revert-buffer)
 (define-key my-global-keys-minor-mode-map (kbd "C-c n") 'my-new-empty-buffer)
-(define-key my-global-keys-minor-mode-map (kbd "C-c C-n") 'my-new-empty-elisp-buffer)
+;; C-c C-n is also used by org-mode
+;(define-key my-global-keys-minor-mode-map (kbd "C-c C-n") 'my-new-empty-elisp-buffer)
 (define-key my-global-keys-minor-mode-map (kbd "C-x K") 'my-kill-buffer-next-window)
 
 (global-set-key (kbd "M-x") 'smex)
