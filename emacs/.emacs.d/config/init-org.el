@@ -37,13 +37,8 @@
 
 (defun gtd ()
    (interactive)
-   (find-file "~/org/inbox.org")
-   (find-file "~/org/next-actions.org")
-   (find-file "~/org/projekte.org")
-   (find-file "~/org/someday.org")
-   (find-file "~/org/today.org")
-   (find-file "~/org/journal.org")
-   (switch-to-buffer "today.org")
+   (find-file "~/org/todo.org")
+   (switch-to-buffer "todo.org")
 )
 
 ; org-remember
