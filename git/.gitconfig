@@ -40,3 +40,5 @@
   ss = status -s
   st = status
   up = !git fetch && git rebase
+[core]
+	excludesfile = /home/sebo/.gitignore
