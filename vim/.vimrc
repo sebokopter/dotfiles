@@ -49,6 +49,9 @@ set showmatch
 " .md indicates markdown, not modula2 filetype
 " per default only .markdown is recognized as markdown file
 au BufRead,BufNewFile *.md set filetype=markdown
+" workaround, since ansible is only automatically recognized if
+" yml file has certain name or directory structure
+au BufRead,BufNewFile *.yml set filetype=ansible
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" VIM user interface
@@ -161,6 +164,8 @@ Bundle 'scrooloose/syntastic'
 Bundle 'altercation/vim-colors-solarized'
 " adds CoffeeScript support to vim. It covers syntax, indenting, compiling,...
 Bundle 'kchmck/vim-coffee-script'
+" For Ansible formatting
+Bundle 'chase/vim-ansible-yaml'
 " ctags (vim-misc is requirement)
 Bundle 'xolox/vim-misc'
 Bundle 'xolox/vim-easytags'
@@ -171,7 +176,7 @@ Bundle 'vim-scripts/a.vim'
 " insert matching delimiters (quotes, parenthesis, ...)
 Bundle 'Raimondi/delimitMate'
 " Highlight and strip trailing whitespace
-Bundle 'ntpeters/vim-better-whitespace'
+"Bundle 'ntpeters/vim-better-whitespace'
 " Align CSV files at commas, align Markdown tables, and more
 Bundle 'godlygeek/tabular'
 " Automatically insert the closing HTML tag
