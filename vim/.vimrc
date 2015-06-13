@@ -24,6 +24,27 @@ filetype plugin indent on
 " use mouse even in terminal
 "set mouse=a
 
+"TODO: Control-C auf "+y mappen
+"TODO:
+"" show file in continuous mode
+"" open all folds
+"" disable dynamic numbers plugin
+"" disable wrap in the first window, because this kills the sync
+"" disable relative numbers
+"" ensure enabled numbers
+"" temorary scrolloff=0
+"" open the current buffer in a vertical split
+"" move our view and set scrollbind in the new split
+"" move back to the old split
+"" set scrollbind in this split, too
+"" reset scrolloff to whatever it was
+"nnoremap <silent> <leader>cm zR:<C-u>NumbersDisable<cr>:setl nowrap<cr>:set nornu<cr>:set nu<cr>:let &scrolloff=0<cr>:bo vs<cr>Ljzt:setl scrollbind<cr><C-w>p:setl scrollbind<cr>:let &scrolloff=my_scrolloff_value<cr>
+" vim localrc
+
+nmap <leader>tb :tab ball<CR>
+map <F7> :tabprevious<CR>
+map <F8> :tabnext<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Programming
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -86,19 +107,29 @@ set hidden
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " With a map leader it's possible to do extra key combinations
+"TODO: change mapleader, or only use nmap, since space has every combination
+"in insert mode double booked, once for writing and then for the leader
+"combinations
 let mapleader = "\<Space>"
 " Fast saving
-nmap <leader>w :w<cr>
-nmap <leader>ww :w!<cr>
-nmap <leader>q :wq<cr>
-nmap <leader>qq :wq!<cr>
+nmap <Leader>w :w<cr>
+nmap <Leader>ww :w!<cr>
+nmap <Leader>q :wq<cr>
+nmap <Leader>qq :wq!<cr>
+vmap <Leader>y "+y
+vmap <Leader>d "+d
+nmap <Leader>p "+p
+nmap <Leader>P "+P
+vmap <Leader>p "+p
+vmap <Leader>P "+P
+nmap <Leader><Leader> V
 
 " in long break lines move around as expected
 map j gj
 map k gk
 
 " Disable search highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :nohl<cr>
+nmap <silent> <leader><cr> :nohl<cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -132,26 +163,26 @@ call vundle#rc()
 
 " begin bundles
 Bundle 'gmarik/vundle'
-" easymotion try it with <leader><leader>w or <leader><leader>f or any other motion
-Bundle 'Lokaltog/vim-easymotion'
+"" easymotion try it with <leader><leader>w or <leader><leader>f or any other motion
+"Bundle 'Lokaltog/vim-easymotion'
 " ctrlp makes file selection easier
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
-Bundle 'kien/ctrlp.vim'
-" NERDtree
+"Bundle 'kien/ctrlp.vim'
+" NERDTree
 Bundle 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 " source code browser
 "Bundle 'vim-scripts/taglist.vim'
 " lean and mean status/tabline
-Bundle 'bling/vim-airline'
+"Bundle 'bling/vim-airline'
 " seek long lines (remaps s key)
 " doesn't work currently (because of github credential request wtf?)
 "Bundle 'goldfeld/vim-seek'
 " git wrapper
-Bundle 'tpope/vim-fugitive'
+"Bundle 'tpope/vim-fugitive'
 " shows git like signs in first column
 " doesn't work currently (is installed but no sign is shown)
-Bundle 'airblade/vim-gitgutter'
+"Bundle 'airblade/vim-gitgutter'
 " shows undo tree
 "Bundle 'sjl/gundo.vim'
 " Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML
@@ -159,7 +190,7 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'tpope/vim-surround'
 " Syntastic is a syntax checking plugin for Vim that runs files through
 " external syntax checkers and displays any resulting errors to the user.
-Bundle 'scrooloose/syntastic'
+"Bundle 'scrooloose/syntastic'
 " Solarized Colorscheme for Vim
 Bundle 'altercation/vim-colors-solarized'
 " adds CoffeeScript support to vim. It covers syntax, indenting, compiling,...
@@ -167,24 +198,25 @@ Bundle 'kchmck/vim-coffee-script'
 " For Ansible formatting
 Bundle 'chase/vim-ansible-yaml'
 " ctags (vim-misc is requirement)
-Bundle 'xolox/vim-misc'
-Bundle 'xolox/vim-easytags'
-Bundle 'majutsushi/tagbar'
+"Bundle 'xolox/vim-misc'
+"Bundle 'xolox/vim-easytags'
+"Bundle 'majutsushi/tagbar'
 " alternative file (get header from c source and vise versa)
 " Simply type :AT to open up the alternate file
-Bundle 'vim-scripts/a.vim'
+"Bundle 'vim-scripts/a.vim'
 " insert matching delimiters (quotes, parenthesis, ...)
 Bundle 'Raimondi/delimitMate'
-" Highlight and strip trailing whitespace
+" Highlight and strip trailing whitespace (ATTENTION: Makes whitespace inputs
+" verrrrrrrrrry slow and unpredictable)
 "Bundle 'ntpeters/vim-better-whitespace'
 " Align CSV files at commas, align Markdown tables, and more
-Bundle 'godlygeek/tabular'
+"Bundle 'godlygeek/tabular'
 " Automatically insert the closing HTML tag
 Bundle 'HTML-AutoCloseTag'
 " Read Unix man pages
-Bundle 'jez/vim-superman'
+"Bundle 'jez/vim-superman'
 " Navigate in the same way (C-h, C-j, C-k, C-l) and seamlessly between tmux and vim
-Bundle 'christoomey/vim-tmux-navigator'
+"Bundle 'christoomey/vim-tmux-navigator'
 
 if installed_vundle == 1
     :BundleInstall
@@ -192,27 +224,30 @@ endif
 
 
 " NERDTree
-nnoremap <silent><leader>f :NERDTreeToggle<Cr>
-let NERDTreeShowBookmarks=1
-let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
-let NERDTreeChDirMode=0
-let NERDTreeQuitOnOpen=1
-let NERDTreeMouseMode=2
-let NERDTreeShowHidden=1
-let NERDTreeKeepTreeInNewTab=1
-" open NERDTree if more than 1 file is opend
-autocmd VimEnter * if argc() > 1 | NERDTree | wincmd p | endif
+" nnoremap <silent><leader>n :NERDTreeToggle<Cr>
+" nnoremap <silent><leader>f :NERDTreeFind<Cr>
+"let NERDTreeShowBookmarks=1
+"let NERDTreeIgnore=['\.pyc', '\~$', '\.swo$', '\.swp$', '\.git', '\.hg', '\.svn', '\.bzr']
+"let NERDTreeChDirMode=0
+"let NERDTreeQuitOnOpen=0
+"let NERDTreeMouseMode=2
+"let NERDTreeShowHidden=1
+"let NERDTreeKeepTreeInNewTab=1
+" open NERDTree if more than 1 file is opend (better use NERDTreeTabs
+"autocmd VimEnter * if argc() > 1 | NERDTree | wincmd p | endif
+" TODO: open NERDTree if more than 1 file or a directory is opened
 
 " jistr/vim-nerdtree-tabs
 " Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+nmap <silent><leader>n :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_console_startup = 0
+let g:nerdtree_tabs_open_on_gui_startup = 1
+let g:nerdtree_tabs_open_on_console_startup = 1
 
 " Taglist
-noremap <silent><leader>t :TlistToggle<Cr>
-let Tlist_Use_Right_Window=1
-let Tlist_GainFocus_On_ToggleOpen = 1
+"noremap <silent><leader>t :TlistToggle<Cr>
+"let Tlist_Use_Right_Window=1
+"let Tlist_GainFocus_On_ToggleOpen = 1
 
 " vim-coffee-script
 " needs reload of filetype detection according to
