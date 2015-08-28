@@ -20,7 +20,6 @@
 
 ;; Agenda
 (define-key global-map "\C-ca" 'org-agenda)
-(setq org-agenda-files (quote ("~/org/next-actions.org")))
 ;; calendar/diary mode in org zu integrieren ist wohl nicht so performant wie direkt in org-mode alles einzutragen
 (setq org-agenda-include-diary nil)
 
