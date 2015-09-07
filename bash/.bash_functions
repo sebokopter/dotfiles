@@ -10,8 +10,12 @@ function r() {
 }
 
 function cd() {
-   command cd $1;
-   ls --color=auto -AF
+  if [ -z "$1" ]; then
+    command cd
+  else
+    command cd "$1"
+  fi
+  ls --color=auto -AF
 }
 
 function get_most_used_commands() {
