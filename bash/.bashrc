@@ -121,8 +121,11 @@ fi
 # The forward-search-history is bound to Ctrl+S by default. But most terminals override Ctrl+S to suspend execution until Ctrl+Q is entered (XON/XOFF flow control). stty -ixon disables flow control:
 stty -ixon
 
-# append to bash_history if Terminal quits
+# append to bash_history instead of rewriting
 shopt -s histappend
+
+# write command in history before showing next prompt
+export PROMPT_COMMAND='history -a'
 
 # don't put duplicate lines or lines starting with space in the history.
 # See bash(1) for more options
