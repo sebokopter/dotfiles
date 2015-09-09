@@ -97,7 +97,7 @@ set wildmenu
 set laststatus=2
 
 " Format the status line
-set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l
+set statusline=\ %F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\/%L\ \(%p%%\)\,\ Column:\ %c
 
 " change buffers without saving
 set hidden
