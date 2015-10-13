@@ -32,12 +32,13 @@
 
 (global-set-key (kbd "C-x K") 'my-other-window-kill-buffer)
 
-; track Emacs commands frequency
-; keyfreq is loaded by packages.el
-(use-package keyfreq
-  :ensure t)
-(keyfreq-mode 1)
-(keyfreq-autosave-mode 1)
+; has various bugs
+;; track Emacs commands frequency
+;; keyfreq is loaded by packages.el
+;(use-package keyfreq
+;  :ensure t)
+;(keyfreq-mode 1)
+;(keyfreq-autosave-mode 1)
 
 ;; enable C-x C-l/C-u
 (put 'upcase-region 'disabled nil)
