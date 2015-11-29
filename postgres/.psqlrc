@@ -1,0 +1,2 @@
+-- show every record as a key-value pair, greatly improving readability if page is not wide enough
+\x auto
