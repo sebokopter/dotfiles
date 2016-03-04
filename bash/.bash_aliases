@@ -181,7 +181,12 @@ alias e='emacsclient -n'
 ################################################################################
 # List directory contents
 alias sl='ls'
-alias ls="ls --color=auto"
+# in Mac OS the BSD ls version is used and there are no long options
+if [[ x${OSTYPE/#darwin[0-9]*/} != x ]]; then
+  alias ls="ls --color=auto"
+else 
+  alias ls="ls -G"; 
+fi
 # -A: don't show . or ..; -F show indicator at end of filename
 alias la='ls -AF'
 alias ll='ls -al'

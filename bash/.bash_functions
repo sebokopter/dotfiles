@@ -15,7 +15,7 @@ function cd() {
   else
     command cd "$1"
   fi
-  ls --color=auto -AF
+  ls -AF
 }
 
 function get_most_used_commands() {

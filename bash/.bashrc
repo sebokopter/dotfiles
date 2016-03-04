@@ -24,7 +24,9 @@ shopt -s dotglob
 
 # less cd typing (errors)
 shopt -s cdspell
-shopt -s autocd
+# autocd=change to dir without writing "cd foo" but instead just foo
+# only available after bash version 4
+[ "${BASH_VERSINFO[0]}" -ge 4 ] && shopt -s autocd
 
 ################################################################################
 # Aliases (stored in .bash_aliases
