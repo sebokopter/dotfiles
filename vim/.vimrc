@@ -45,6 +45,9 @@ nmap <leader>tb :tab ball<CR>
 map <F7> :tabprevious<CR>
 map <F8> :tabnext<CR>
 
+" fix backspace on MacOS:
+set backspace=indent,eol,start
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Programming
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -286,7 +289,7 @@ nmap <silent> <leader>b :TagbarToggle<CR>
 let g:airline#extensions#hunks#non_zero_only = 1
 
 " Raimondi/delimitMate
-let delimitMate_expand_cr = 1
+"let delimitMate_expand_cr = 1
 augroup mydelimitMate
  au!
  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]

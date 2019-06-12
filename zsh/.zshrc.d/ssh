@@ -1,0 +1,2 @@
+# suppresses LC_CTYPE problems when sshing
+export LC_CTYPE="de_DE.UTF-8"

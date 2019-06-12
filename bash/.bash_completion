@@ -1,5 +1,6 @@
 # git aliases
 
+# Ubuntu/Debian bash completion
 if [ -f "/usr/share/bash-completion/completions/git" ]; then
   source /usr/share/bash-completion/completions/git
 
@@ -7,3 +8,8 @@ if [ -f "/usr/share/bash-completion/completions/git" ]; then
     complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
   fi
 fi
+
+# .bash_completion.d/*
+for bcfile in ~/.bash_completion.d/* ; do
+  source $bcfile
+done

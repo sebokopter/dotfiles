@@ -1,0 +1,28 @@
+autoload -U colors
+colors
+
+local username="%{$fg_bold[green]%}[%n]%{$reset_color%}"
+local hostname="%{$fg_bold[blue]%}[%m]%{$reset_color%}"
+local workdir="%{$fg[default]%}[%~]%{$reset_color%}"
+
+##
+## Prompt zsh style (% and #)
+##
+#local actual_prompt="%{$bold_color%}%#%{$reset_color%}"
+
+##
+## Prompt bash style ($ and #)
+##
+function actual_prompt () {
+    if [[ $EUID -eq 0 ]]; then
+        print "#"
+    else
+        print "$"
+    fi
+}
+
+export PROMPT="$username$hostname$workdir
+$(actual_prompt) "
+
+export PROMT2=""  # left continoution prompt
+export RPROMT2="" # right continoution prompt

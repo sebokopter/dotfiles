@@ -39,6 +39,19 @@
   s = status
   ss = status -s
   st = status
-  up = !git fetch && git rebase
+  up = pull --rebase
 [core]
-	excludesfile = /home/sebo/.gitignore
+	excludesfile = /Users/sheil/.gitignore_global
+	autocrlf = input
+[color]
+	ui = auto
+[commit]
+	template = /Users/sheil/.stCommitMsg
+[diff]
+	tool = androidstudio
+[merge]
+	tool = androidstudio
+[difftool "androidstudio"]
+	cmd = /usr/local/bin/studio diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
+[mergetool "androidstudio"]
+	cmd = /usr/local/bin/studio merge $LOCAL $REMOTE $BASE $MERGED

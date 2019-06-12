@@ -32,8 +32,8 @@ shopt -s cdspell
 # Aliases (stored in .bash_aliases
 ################################################################################
 # invoke the aliases
-if [ -e ~/.bash_aliases ]; then
-  source ~/.bash_aliases
+if [ -e ~/.aliases ]; then
+  source ~/.aliases
 fi
 
 ################################################################################
@@ -57,12 +57,8 @@ fi
 
 export EDITOR="vim"
 # PATH environment variable
-export PATH="/sbin:/usr/sbin:${PATH}"
-if [[ -n $(which ruby) && -f /usr/bin/gem ]]; then 
-    RUBY_PATH=`ruby -rubygems -e 'puts Gem.user_dir'`
-    if [[ -d $RUBY_PATH/bin ]]; then
-        export PATH="`ruby -rubygems -e 'puts Gem.user_dir'`/bin:$PATH"
-    fi
+if [ -e ~/bin ]; then
+    export PATH="~/bin:${PATH}"
 fi
 
 # colored grep
@@ -156,7 +152,7 @@ function git_info {
   PROMPT_CLEAN=" \[\033[1;32m\]✓\[\033[0m\]"
   DIRTY=0
   STATE=''
-  local status="$(git status -bs --porcelain 2> /dev/null)"
+  local status="$(git status --branch --porcelain 2> /dev/null)"
   if [[ -n "$(grep -v ^# <<< "${status}")" ]]; then
     DIRTY=1
     STATE=$PROMPT_DIRTY
@@ -207,10 +203,10 @@ scm() {
 
 prompt() {
 
-    my_ps_host="\[\033[00;32m\]\h\[\033[00m\]";
-    my_ps_user="\[\033[01;32m\]\u\[\033[00m\]";
-    my_ps_root="\[\033[01;31m\]\u\[\033[00m\]";
-    my_ps_path="\[\033[00;36m\]\w\[\033[00m\]";
+    my_ps_host="\[\033[0;32m\]\h\[\033[00m\]";
+    my_ps_user="\[\033[1;32m\]\u\[\033[00m\]";
+    my_ps_root="\[\033[1;31m\]\u\[\033[00m\]";
+    my_ps_path="\[\033[0;36m\]\w\[\033[00m\]";
 
     # nice prompt
     case "`id -u`" in
@@ -234,8 +230,11 @@ PROMPT_COMMAND=prompt
 ################################################################################
 # Custom/locale adjustements
 ################################################################################
-if [ -e ~/.bash_aliases.custom ]; then
-    source ~/.bash_aliases.custom
+if [ -e ~/.aliases.custom ]; then
+    source ~/.aliases.custom
+fi
+if [ -e ~/.bash_functions.custom ]; then
+    source ~/.bash_functions.custom
 fi
 if [ -e ~/.bashrc.custom ]; then
     source ~/.bashrc.custom

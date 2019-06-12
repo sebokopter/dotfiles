@@ -1,0 +1,2 @@
+# ctrl-u should not kill-whole-line but instead like bash only from cursor to beginning of line
+bindkey \^U backward-kill-line

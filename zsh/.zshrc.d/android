@@ -1,0 +1,9 @@
+export ANDROID_HOME=/Users/sheil/Library/Android/sdk
+
+if [[ -d $ANDROID_HOME ]]; then
+    export PATH="$PATH:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin"
+fi
+
+if [[ -d /Applications/Genymotion.app/Contents/MacOS ]]; then
+    export PATH="$PATH:/Applications/Genymotion.app/Contents/MacOS"
+fi
