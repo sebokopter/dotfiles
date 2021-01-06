@@ -29,22 +29,6 @@ shopt -s cdspell
 [ "${BASH_VERSINFO[0]}" -ge 4 ] && shopt -s autocd
 
 ################################################################################
-# Aliases (stored in .bash_aliases
-################################################################################
-# invoke the aliases
-if [ -e ~/.aliases ]; then
-  source ~/.aliases
-fi
-
-################################################################################
-# Functions (stored in .bash_functions
-################################################################################
-# invoke the Functions
-if [ -e ~/.bash_functions ]; then
-  source ~/.bash_functions
-fi
-
-################################################################################
 # FASD
 ################################################################################
 if type fasd >/dev/null 2>&1; then
@@ -57,8 +41,8 @@ fi
 
 export EDITOR="vim"
 # PATH environment variable
-if [ -e ~/bin ]; then
-    export PATH="~/bin:${PATH}"
+if [ -e $HOME/bin ]; then
+    export PATH="$HOME/bin:${PATH}"
 fi
 
 # colored grep
@@ -230,8 +214,8 @@ PROMPT_COMMAND=prompt
 ################################################################################
 # Custom/locale adjustements
 ################################################################################
-if [ -e ~/.aliases.custom ]; then
-    source ~/.aliases.custom
+if [ -e ~/.bash_aliases.custom ]; then
+    source ~/.bash_aliases.custom
 fi
 if [ -e ~/.bash_functions.custom ]; then
     source ~/.bash_functions.custom

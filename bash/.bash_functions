@@ -9,15 +9,6 @@ function r() {
   fi
 }
 
-function cd() {
-  if [ -z "$1" ]; then
-    command cd
-  else
-    command cd "$1"
-  fi
-  ls -AF
-}
-
 function get_most_used_commands() {
   history | awk '{$1=$2=$3=""; CMD[$0]++; count++} END { for (i in CMD) printf "%03d  %2.2f%% %s\n", CMD[i], CMD[i]/count*100, i;}' | sort -nr | head -n20
 }

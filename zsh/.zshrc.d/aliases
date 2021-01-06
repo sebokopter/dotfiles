@@ -1,6 +1,0 @@
-if [[ -e $HOME/.sh_aliases ]]; then
-    source $HOME/.sh_aliases
-fi
-if [[ -e $HOME/.sh_aliases.custom ]]; then
-    source $HOME/.sh_aliases.custom
-fi

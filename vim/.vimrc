@@ -61,8 +61,8 @@ set shiftwidth=2
 set expandtab
 
 " for indenting
-set autoindent
-set smartindent
+"set autoindent
+"set smartindent
 
 " show matching brackets whent cursor is over one
 set showmatch
@@ -172,8 +172,8 @@ Bundle 'gmarik/vundle'
 " Full path fuzzy file, buffer, mru, tag, ... finder for Vim.
 "Bundle 'kien/ctrlp.vim'
 " NERDTree
-Bundle 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
+"Bundle 'scrooloose/nerdtree'
+"Bundle 'jistr/vim-nerdtree-tabs'
 " source code browser
 "Bundle 'vim-scripts/taglist.vim'
 " lean and mean status/tabline
@@ -242,10 +242,10 @@ endif
 
 " jistr/vim-nerdtree-tabs
 " Open/close NERDTree Tabs with \t
-nmap <silent><leader>n :NERDTreeTabsToggle<CR>
+"nmap <silent><leader>n :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
-let g:nerdtree_tabs_open_on_gui_startup = 1
-let g:nerdtree_tabs_open_on_console_startup = 1
+"let g:nerdtree_tabs_open_on_gui_startup = 1
+"let g:nerdtree_tabs_open_on_console_startup = 1
 
 " Taglist
 "noremap <silent><leader>t :TlistToggle<Cr>

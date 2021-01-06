@@ -3,9 +3,7 @@
 #
 
 # MacOS bash completion
-if [ -f /usr/local/share/bash-completion/bash_completion ]; then
-  . /usr/local/share/bash-completion/bash_completion
-fi
+[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 

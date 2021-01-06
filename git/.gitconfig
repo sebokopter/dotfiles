@@ -1,6 +1,6 @@
 [user]
 	name = Sebastian Heil
-	email = "(none)"
+	email = "sebastian.heil@1und1.de"
 [core]
 [push]
 	default = current
@@ -35,13 +35,13 @@
   p = push
   pl = pull
   po = push origin
-  r = remote update -p
+  r = rebase
+  ru = remote update -p
   s = status
   ss = status -s
   st = status
-  up = pull --rebase
+  up = pull --rebase --autostash
 [core]
-	excludesfile = /Users/sheil/.gitignore_global
 	autocrlf = input
 [color]
 	ui = auto

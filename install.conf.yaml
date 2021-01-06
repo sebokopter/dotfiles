@@ -1,0 +1,27 @@
+- defaults:
+    link:
+      relink: true
+
+- clean:
+    ~/:
+    ~/.ssh:
+    ~/.config:
+      recursive: true
+  
+- link:
+    ~/.bash_aliases: bash/.bash_aliases
+    ~/.bash_bash_profile: bash/.bash_profile
+    ~/.bash_completion: bash/.bash_completion
+    ~/.bash_functions: bash/.bash_functions
+    ~/.bash_logout: bash/.bash_logout
+    ~/.bashrc: bash/.bashrc
+    ~/.gitconfig: git/.gitconfig
+    ~/.config/git/ignore: 
+      path: git/.gitignore
+      create: true
+    ~/.inputrc: bash/.inputrc
+    ~/.ssh:
+      create: true
+      glob: true
+      path: ssh/.ssh/*
+    ~/.vimrc: vim/.vimrc

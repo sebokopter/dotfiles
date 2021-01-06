@@ -2,14 +2,15 @@
 
 # Ubuntu/Debian bash completion
 if [ -f "/usr/share/bash-completion/completions/git" ]; then
-  source /usr/share/bash-completion/completions/git
-
   if [ "$(type -t __git_wrap__git_main)" = 'function' ]; then
     complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
   fi
 fi
 
-# .bash_completion.d/*
-for bcfile in ~/.bash_completion.d/* ; do
-  source $bcfile
-done
+# MacOS bash completion
+if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
+  if [ "$(type -t __git_wrap__git_main)" = 'function' ]; then
+    complete -o bashdefault -o default -o nospace -F __git_wrap__git_main g
+  fi
+fi
+[[ -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]] && complete -F _gradle gw
