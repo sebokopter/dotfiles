@@ -8,7 +8,8 @@ if [[ "$UID" -ne 0 && -e $( which sudo ) ]]; then
 fi
 
 # search with some additional version information
-alias as='aptitude -F "%c%a%M %p %d %Z %v %V" search'
+alias as='aptitude -F "%c%a%M %0p# %v %V %d#" search'
+
 # AFAIK there exists no aptitude replace right now
 alias ap='apt-cache policy'
 
