@@ -24,27 +24,22 @@ shopt -s dotglob
 
 # less cd typing (errors)
 shopt -s cdspell
+
 # autocd=change to dir without writing "cd foo" but instead just foo
 # only available after bash version 4
 [ "${BASH_VERSINFO[0]}" -ge 4 ] && shopt -s autocd
-
-################################################################################
-# FASD
-################################################################################
-if type fasd >/dev/null 2>&1; then
-    eval "$(fasd --init auto)"
-fi
 
 ################################################################################
 # Variables
 ################################################################################
 
 export EDITOR="vim"
+
 # PATH environment variable
 if [ -e $HOME/bin ]; then
     export PATH="$HOME/bin:${PATH}"
 fi
-
+export PATH="/sbin:/usr/sbin:${PATH}"
 # colored grep
 export GREP_COLOR='1;33'
 # colored ls
