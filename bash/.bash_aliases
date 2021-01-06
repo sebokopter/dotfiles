@@ -229,3 +229,8 @@ alias zshrcd="vim ~/.zshrc.d/"
 if [ -e ~/.bash_aliases.custom ]; then
     source ~/.bash_aliases.custom
 fi
+
+# TODO: if not OSX then:
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+alias open='xdg-open'
