@@ -5,6 +5,10 @@
 " auto read when a file is changed from the outside
 set autoread
 
+" set nocompatible mode, enables vim features (like command history) but
+" therefore is not fully compatible with the vi feature set
+set nocompatible
+
 " :W saves the file as sudo
 " (useful for editing root owned files as normal user)
 command! W w !sudo tee % > /dev/null
@@ -18,28 +22,8 @@ autocmd BufReadPost *
 " always be in the right directory
 set autochdir
 
-" don't know exactly if I need this
-filetype plugin indent on
-
 " use mouse even in terminal
 "set mouse=a
-
-"TODO: Control-C auf "+y mappen
-"TODO:
-"" show file in continuous mode
-"" open all folds
-"" disable dynamic numbers plugin
-"" disable wrap in the first window, because this kills the sync
-"" disable relative numbers
-"" ensure enabled numbers
-"" temorary scrolloff=0
-"" open the current buffer in a vertical split
-"" move our view and set scrollbind in the new split
-"" move back to the old split
-"" set scrollbind in this split, too
-"" reset scrolloff to whatever it was
-"nnoremap <silent> <leader>cm zR:<C-u>NumbersDisable<cr>:setl nowrap<cr>:set nornu<cr>:set nu<cr>:let &scrolloff=0<cr>:bo vs<cr>Ljzt:setl scrollbind<cr><C-w>p:setl scrollbind<cr>:let &scrolloff=my_scrolloff_value<cr>
-" vim localrc
 
 nmap <leader>tb :tab ball<CR>
 map <F7> :tabprevious<CR>
@@ -70,6 +54,10 @@ set showmatch
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "" Filetypes
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" don't know exactly if I need this
+filetype plugin indent on
+
 " .md indicates markdown, not modula2 filetype
 " per default only .markdown is recognized as markdown file
 au BufRead,BufNewFile *.md set filetype=markdown
@@ -86,14 +74,12 @@ set hlsearch
 set incsearch
 set smartcase
 
-" linenumber
-set number
-set relativenumber
-
 " show current cursor position
 set ruler
 
-" show tab completion suggestions in the command line
+" show tab completion suggestions over the command line (additionally to the
+" default to toggling through the possible commands
+" i.e. tab completion similar to the bash
 set wildmenu
 
 " Always show the status line
@@ -109,11 +95,14 @@ set hidden
 "" Keyboard shortcuts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+"TODO: Control-C auf "+y mappen
+
 " With a map leader it's possible to do extra key combinations
 "TODO: change mapleader, or only use nmap, since space has every combination
 "in insert mode double booked, once for writing and then for the leader
 "combinations
 let mapleader = "\<Space>"
+let maplocalleader = mapleader
 " Fast saving
 nmap <Leader>w :w<cr>
 nmap <Leader>ww :w!<cr>
@@ -161,7 +150,7 @@ if !filereadable(vundle_readme)
     silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
     let installed_vundle=1
 endif
-set rtp+=~/.vim/bundle/vundle/
+set runtimepath+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 " begin bundles
@@ -220,6 +209,9 @@ Bundle 'HTML-AutoCloseTag'
 "Bundle 'jez/vim-superman'
 " Navigate in the same way (C-h, C-j, C-k, C-l) and seamlessly between tmux and vim
 "Bundle 'christoomey/vim-tmux-navigator'
+Bundle 'freitass/todo.txt-vim'
+" Toggle (relative)numbers on/off
+Bundle 'myusuf3/numbers.vim'
 
 if installed_vundle == 1
     :BundleInstall
@@ -297,3 +289,8 @@ augroup mydelimitMate
  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
+
+" numbers.vim
+nnoremap <F10> :NumbersToggle<CR>
+" make linenumber also visible in insert mode
+set number
