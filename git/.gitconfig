@@ -1,11 +1,11 @@
 [user]
-	name = Sebastian Heil
-	email = "sebastian.heil@1und1.de"
+  name = Sebastian Heil
+  email = sebastian.heil@exaring.de
 [core]
 [push]
-	default = current
+  default = current
 [alias]
-	co = checkout
+  co = checkout
   a = add
   all = !git add .
   b = branch
@@ -42,15 +42,13 @@
   st = status
   up = pull --rebase --autostash
 [core]
-	autocrlf = input
+  autocrlf = input
 [color]
-	ui = auto
-[commit]
-	template = /Users/sheil/.stCommitMsg
+  ui = auto
 [diff]
-	tool = androidstudio
+  tool = androidstudio
 [merge]
-	tool = androidstudio
+  tool = androidstudio
 [difftool "androidstudio"]
 	cmd = /usr/local/bin/studio diff $(cd $(dirname "$LOCAL") && pwd)/$(basename "$LOCAL") $(cd $(dirname "$REMOTE") && pwd)/$(basename "$REMOTE")
 [mergetool "androidstudio"]

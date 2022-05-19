@@ -7,9 +7,5 @@
 
 [[ -f ~/.bashrc ]] && source ~/.bashrc
 
-## Jenv
-eval "$(jenv init -)"
-
-
 ## perlbrew
 [[ -f ~/perl5/perlbrew/etc/bashrc ]] && source ~/perl5/perlbrew/etc/bashrc
